@@ -6,9 +6,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="error-container">
     <div class="terminal-box">
       <div class="terminal-header">
-        <span class="btn close"></span>
-        <span class="btn min"></span>
-        <span class="btn max"></span>
+        <span class="term-btn close"></span>
+        <span class="term-btn min"></span>
+        <span class="term-btn max"></span>
         <span class="title">mohamed@devops-server:~</span>
       </div>
       <div class="terminal-body" id="error-terminal">
@@ -52,15 +52,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     gap: 8px;
   }
 
-  .terminal-header .btn {
+  .terminal-header .term-btn {
     width: 12px;
     height: 12px;
     border-radius: 50%;
+    display: inline-block;
   }
 
-  .terminal-header .btn.close { background-color: #ef4444; }
-  .terminal-header .btn.min { background-color: #f59e0b; }
-  .terminal-header .btn.max { background-color: #10b981; }
+  .terminal-header .term-btn.close { background-color: #ef4444; }
+  .terminal-header .term-btn.min { background-color: #f59e0b; }
+  .terminal-header .term-btn.max { background-color: #10b981; }
 
   .terminal-header .title {
     margin-left: auto;
