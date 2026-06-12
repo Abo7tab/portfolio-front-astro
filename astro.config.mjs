@@ -1,12 +1,16 @@
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({
   site: 'https://folio.iceiy.com',
   output: 'static',
+
   build: {
     assets: 'assets',
     inlineStylesheets: 'auto',
   },
+
   vite: {
     server: {
       proxy: {
@@ -21,4 +25,6 @@ export default defineConfig({
       cssMinify: true,
     },
   },
+
+  integrations: [sitemap()],
 });
