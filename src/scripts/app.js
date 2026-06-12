@@ -402,6 +402,9 @@ async function loadSkills() {
       </div>
     `).join('');
 
+    // Trigger animations for newly added skills
+    observeNewReveals(container);
+
   } catch (err) {
     console.error('Failed to load skills:', err);
   }
