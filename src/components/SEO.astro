@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Mohamed Emad Ali | محمد عماد علي — DevOps & Network Engineer & Freelance Developer',
-  description = 'Mohamed Emad Ali (محمد عماد علي) — DevOps & Network Engineer and Freelance Web Developer based in Giza, Egypt. Specialized in backend development, network infrastructure, and cybersecurity. | بورتفوليو المهندس محمد عماد علي — مهندس شبكات وعمليات تطوير ومطور ويب مستقل',
+  title = 'Mohamed Emad Ali | محمد عماد علي - DevOps & Network Engineer & Freelance Developer',
+  description = 'Mohamed Emad Ali (محمد عماد علي) - DevOps & Network Engineer and Freelance Web Developer based in Giza, Egypt. Specialized in backend development, network infrastructure, and cybersecurity. | بورتفوليو المهندس محمد عماد علي - خبير شبكات وبرمجة وتطوير ويب من مصر',
   image = 'https://folio.iceiy.com/images/og-image.jpg',
   url = 'https://folio.iceiy.com',
 } = Astro.props;
@@ -19,11 +19,11 @@ const keywords = [
   'hire freelance developer', 'IT consultant', 'infrastructure engineer', 'cybersecurity',
   'PHP developer', 'full stack developer', 'freelance web developer Egypt',
   'server administration', 'CI/CD', 'cloud deployment', 'Linux engineer',
-  'محمد عماد علي', 'مهندس محمد عماد', 'محمد عماد', 'مهندس شبكات',
+  'محمد عماد علي', 'مهندس محمد عماد', 'محمد عماد', 'مهندس برمجيات',
   'مهندس DevOps', 'مطور ويب مستقل', 'استشارات تقنية', 'مهندس بنية تحتية',
-  'مطور لارافيل', 'مبرمج مستقل', 'مطور ويب', 'مهندس برمجيات',
-  'تطوير مواقع', 'برمجة مواقع', 'مبرمج ويب مصر', 'مطور باك اند',
-  'هندسة شبكات', 'أمن سيبراني', 'استضافة مواقع', 'مبرمج فري لانسر',
+  'مطور لاراڤيل', 'باك اند', 'مطور ويب', 'مهندس شبكات',
+  'سيرفرات لينكس', 'برمجة وتطوير', 'مبرمج ويب مستقل', 'مطور باك اند',
+  'مهندس برمجيات', 'أمن سيبراني', 'استشارات تقنية', 'برمجة مواقع'
 ].join(', ');
 
 const personSchema = {
@@ -52,8 +52,8 @@ const personSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  'name': 'Mohamed Emad Ali — Portfolio',
-  'alternateName': 'بورتفوليو محمد عماد علي',
+  'name': 'Mohamed Emad Ali - Portfolio',
+  'alternateName': 'بورتفوليو المهندس محمد عماد علي',
   'url': 'https://folio.iceiy.com',
   'inLanguage': ['en', 'ar'],
 };
@@ -71,7 +71,7 @@ const websiteSchema = {
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={image} />
-<meta property="og:site_name" content="Mohamed Emad Ali — Portfolio" />
+<meta property="og:site_name" content="Mohamed Emad Ali - Portfolio" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:locale:alternate" content="ar_EG" />
 
