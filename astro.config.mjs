@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://folio.iceiy.com',
+  site: 'https://mohamed-emad-astro.vercel.app',
   output: 'static',
 
   build: {
