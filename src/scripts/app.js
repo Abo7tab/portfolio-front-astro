@@ -19,11 +19,11 @@ function delay(ms) {
 // =============================================
 document.addEventListener('DOMContentLoaded', async () => {
   const terminalLines = [
-    { text: "iceiy@devops-server:~$ ping -c 3 folio.iceiy.com", delay: 200 },
-    { text: "PING folio.iceiy.com (104.21.19.200) 56(84) bytes of data.", delay: 50 },
+    { text: "mohamed@devops-server:~$ ping -c 3 mohamed-emad-astro.vercel.app", delay: 200 },
+    { text: "PING mohamed-emad-astro.vercel.app (104.21.19.200) 56(84) bytes of data.", delay: 50 },
     { text: "64 bytes from 104.21.19.200: icmp_seq=1 ttl=56 time=12.4 ms", delay: 100 },
-    { text: "iceiy@devops-server:~$ initializing core_vitals... OK", delay: 150 },
-    { text: "iceiy@devops-server:~$ fetching_portfolio_api --live...", delay: 200 },
+    { text: "mohamed@devops-server:~$ initializing core_vitals... OK", delay: 150 },
+    { text: "mohamed@devops-server:~$ fetching_portfolio_api --live...", delay: 200 },
   ];
 
   const terminalOutput = document.getElementById('terminal-output');

@@ -129,3 +129,6 @@
 [2m22:57:45[22m [34m[vite][39m server restarted.
 [2m23:15:52[22m Configuration file updated. Restarting...
 [vite] connected.
+[vite] connected.
+[2m23:15:54[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[2m23:15:54[22m [34m[vite][39m server restarted.
