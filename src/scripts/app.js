@@ -26,16 +26,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   const agent = navigator.userAgent.substring(0, 50) + '...';
 
   const terminalLines = [
-    { text: "mohamed@devops-server:~$ analyzing_visitor_fingerprint --deep", delay: 800 },
-    { text: `> Target OS detected: ${os} | CPU Cores: ${cores}`, delay: 800 },
-    { text: `> Target Resolution: ${screen} | Target Lang: ${lang}`, delay: 800 },
-    { text: `> Client Agent: ${agent}`, delay: 800 },
-    { text: "mohamed@devops-server:~$ ping -c 3 mohamed-emad-astro.vercel.app", delay: 1000 },
-    { text: "PING mohamed-emad-astro.vercel.app (104.21.19.200) 56(84) bytes of data.", delay: 400 },
-    { text: "64 bytes from 104.21.19.200: icmp_seq=1 ttl=56 time=12.4 ms", delay: 600 },
-    { text: "mohamed@devops-server:~$ fetching_portfolio_api --live...", delay: 800 },
-    { text: "[*] Connection established. Decrypting payload...", delay: 1000 },
-    { text: "[*] Access Granted. Welcome, HR Manager.", delay: 1200 },
+    { text: "mohamed@devops-server:~$ analyzing_visitor_fingerprint --deep", delay: 150 },
+    { text: `> Target OS detected: ${os} | CPU Cores: ${cores}`, delay: 100 },
+    { text: `> Target Resolution: ${screen} | Target Lang: ${lang}`, delay: 100 },
+    { text: `> Client Agent: ${agent}`, delay: 100 },
+    { text: "mohamed@devops-server:~$ ping -c 3 mohamed-emad-astro.vercel.app", delay: 200 },
+    { text: "PING mohamed-emad-astro.vercel.app (104.21.19.200) 56(84) bytes of data.", delay: 50 },
+    { text: "64 bytes from 104.21.19.200: icmp_seq=1 ttl=56 time=12.4 ms", delay: 50 },
+    { text: "mohamed@devops-server:~$ fetching_portfolio_api --live...", delay: 200 },
+    { text: "[*] Connection established. Decrypting payload...", delay: 200 },
+    { text: "[*] Access Granted. Welcome, HR Manager.", delay: 200 },
   ];
 
   const terminalOutput = document.getElementById('terminal-output');
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       div.className = 'terminal-line success';
       div.textContent = "[SUCCESS] Core systems online. Launching UI...";
       terminalOutput.insertBefore(div, terminalCursor);
-      await delay(400);
+      await delay(2500); // Wait 2.5 seconds at the end so HR can read it
     }
 
   } catch (err) {
