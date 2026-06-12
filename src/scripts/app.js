@@ -18,12 +18,24 @@ function delay(ms) {
 // BOOT — Entry Point
 // =============================================
 document.addEventListener('DOMContentLoaded', async () => {
+  // Get visitor meta info for a hacker vibe
+  const os = navigator.platform || 'Unknown OS';
+  const lang = navigator.language || 'en-US';
+  const screen = `${window.screen.width}x${window.screen.height}`;
+  const cores = navigator.hardwareConcurrency || 'unknown';
+  const agent = navigator.userAgent.substring(0, 50) + '...';
+
   const terminalLines = [
-    { text: "mohamed@devops-server:~$ ping -c 3 mohamed-emad-astro.vercel.app", delay: 200 },
-    { text: "PING mohamed-emad-astro.vercel.app (104.21.19.200) 56(84) bytes of data.", delay: 50 },
-    { text: "64 bytes from 104.21.19.200: icmp_seq=1 ttl=56 time=12.4 ms", delay: 100 },
-    { text: "mohamed@devops-server:~$ initializing core_vitals... OK", delay: 150 },
-    { text: "mohamed@devops-server:~$ fetching_portfolio_api --live...", delay: 200 },
+    { text: "mohamed@devops-server:~$ analyzing_visitor_fingerprint --deep", delay: 800 },
+    { text: `> Target OS detected: ${os} | CPU Cores: ${cores}`, delay: 800 },
+    { text: `> Target Resolution: ${screen} | Target Lang: ${lang}`, delay: 800 },
+    { text: `> Client Agent: ${agent}`, delay: 800 },
+    { text: "mohamed@devops-server:~$ ping -c 3 mohamed-emad-astro.vercel.app", delay: 1000 },
+    { text: "PING mohamed-emad-astro.vercel.app (104.21.19.200) 56(84) bytes of data.", delay: 400 },
+    { text: "64 bytes from 104.21.19.200: icmp_seq=1 ttl=56 time=12.4 ms", delay: 600 },
+    { text: "mohamed@devops-server:~$ fetching_portfolio_api --live...", delay: 800 },
+    { text: "[*] Connection established. Decrypting payload...", delay: 1000 },
+    { text: "[*] Access Granted. Welcome, HR Manager.", delay: 1200 },
   ];
 
   const terminalOutput = document.getElementById('terminal-output');
