@@ -129,7 +129,9 @@ function observeNewReveals(container) {
 
 /** Create or update a Load More button */
 function setupLoadMoreBtn(btnId, parentEl, allItems, renderFn, bindFn) {
-  let shown = PAGE_SIZE;
+  let shown = parseInt(sessionStorage.getItem(btnId) || PAGE_SIZE, 10);
+  if (shown > allItems.length) shown = allItems.length;
+  if (shown < PAGE_SIZE) shown = PAGE_SIZE;
 
   // Render first page
   parentEl.innerHTML = allItems.slice(0, shown).map((item, i) => renderFn(item, i)).join('');
@@ -137,13 +139,13 @@ function setupLoadMoreBtn(btnId, parentEl, allItems, renderFn, bindFn) {
   observeNewReveals(parentEl);
 
   // No need for button if all items fit
-  if (allItems.length <= PAGE_SIZE) return;
+  if (allItems.length <= shown) return;
 
   // Create button
   const remaining = allItems.length - shown;
   const btn = document.createElement('button');
   btn.id = btnId;
-  btn.className = 'load-more-btn reveal-up';
+  btn.className = 'load-more-btn';
   btn.innerHTML = `<i class="ri-arrow-down-line"></i> Load More <span class="load-more-count">(${remaining} remaining)</span>`;
   parentEl.parentElement.appendChild(btn);
 
@@ -155,6 +157,7 @@ function setupLoadMoreBtn(btnId, parentEl, allItems, renderFn, bindFn) {
     // Insert before the button placeholder — append to grid
     parentEl.insertAdjacentHTML('beforeend', html);
     shown += nextBatch.length;
+    sessionStorage.setItem(btnId, shown);
 
     if (bindFn) bindFn();
     observeNewReveals(parentEl);

@@ -114,3 +114,9 @@
 [2m21:46:13[22m [34m[200][39m / [2m9ms[22m
 [2m21:49:10[22m [34m[200][39m / [2m4ms[22m
 [2m21:49:37[22m [34m[200][39m / [2m4ms[22m
+[2m22:12:31[22m [34m[watch][39m src/scripts/app.js
+[2m22:12:32[22m [34m[200][39m / [2m5ms[22m
+[2m22:15:40[22m [34m[watch][39m public/admin/index.html
+[2m22:15:40[22m [34m[watch][39m public/admin/login.html
+[2m22:15:56[22m [34m[watch][39m src/scripts/app.js
+[2m22:15:57[22m [34m[200][39m / [2m5ms[22m
