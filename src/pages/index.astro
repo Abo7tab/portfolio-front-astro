@@ -1,0 +1,369 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AnimatedBg from '../components/AnimatedBg.astro';
+import Preloader from '../components/Preloader.astro';
+import HireMe from '../components/HireMe.astro';
+import Footer from '../components/Footer.astro';
+import Modals from '../components/Modals.astro';
+---
+
+<BaseLayout>
+
+  <!-- Preloader -->
+  <Preloader />
+
+  <!-- Modals -->
+  <Modals />
+
+  <!-- Background Layers -->
+  <AnimatedBg />
+
+  <!-- ══════════════════════════════════════
+       Main Wrapper (hidden until loaded)
+       ══════════════════════════════════════ -->
+  <div class="main-wrapper" id="main-content">
+
+    <!-- ────────── HEADER / PROFILE ────────── -->
+    <header>
+      <div class="container profile">
+
+        <!-- Profile Photo + Name + Social -->
+        <div class="profile-data">
+
+          <!-- Skeleton: Avatar -->
+          <div class="imgBx reveal-scale" id="skeleton-avatar-wrap" style="transition-delay: 0ms;">
+            <div class="skeleton skeleton-avatar" style="width:100%;height:100%;border-radius:50%;"></div>
+          </div>
+          <!-- Real: Avatar (hidden until loaded) -->
+          <div class="imgBx reveal-scale" id="real-avatar-wrap" style="transition-delay: 0ms; display:none;">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                 alt="Mohamed Emad Ali" width="160" height="160"
+                 loading="lazy" decoding="async"
+                 class="profile-img" id="profile-img"
+                 data-bs-toggle="modal" data-bs-target="#profileModal" />
+          </div>
+
+          <!-- Skeleton: Name + Title -->
+          <div id="skeleton-profile-text">
+            <div class="skeleton skeleton-title" style="width:240px;height:28px;margin:0 auto 10px;"></div>
+            <div class="skeleton skeleton-text-sm" style="width:180px;height:16px;margin:0 auto 12px;"></div>
+          </div>
+          <!-- Real: Name + Title -->
+          <h1 class="name reveal-left" id="profile-name" style="transition-delay:100ms; display:none;">Mohamed Emad Ali</h1>
+          <h2 class="profession reveal-right" id="profile-profession" style="transition-delay:200ms; display:none;">DevOps & Network Engineer</h2>
+          <p class="profile-bio reveal-up" id="profile-bio" style="display:none; transition-delay:300ms;"></p>
+
+          <!-- Skeleton: Socials -->
+          <div id="skeleton-socials" style="display:flex;gap:12px;justify-content:center;margin-top:8px;">
+            <div class="skeleton" style="width:46px;height:46px;border-radius:50%;"></div>
+            <div class="skeleton" style="width:46px;height:46px;border-radius:50%;"></div>
+            <div class="skeleton" style="width:46px;height:46px;border-radius:50%;"></div>
+          </div>
+          <!-- Real: Socials -->
+          <div class="socials reveal-scale" id="socials-container" style="transition-delay:400ms; display:none;"></div>
+        </div>
+
+        <!-- Skeleton: Stats -->
+        <div class="skeleton-stats-row reveal-up" id="skeleton-stats" style="transition-delay:500ms;">
+          <div class="skeleton-stat-item">
+            <div class="skeleton skeleton-stat"></div>
+            <div class="skeleton skeleton-text-xs" style="width:60px;"></div>
+          </div>
+          <div class="skeleton-stat-item">
+            <div class="skeleton skeleton-stat"></div>
+            <div class="skeleton skeleton-text-xs" style="width:70px;"></div>
+          </div>
+          <div class="skeleton-stat-item">
+            <div class="skeleton skeleton-stat"></div>
+            <div class="skeleton skeleton-text-xs" style="width:65px;"></div>
+          </div>
+        </div>
+        <!-- Real: Stats -->
+        <div class="profile-info reveal-up" id="real-stats" style="transition-delay:500ms; display:none;">
+          <div class="info-item">
+            <h3 class="number" id="years-exp">0</h3>
+            <p class="desc">Years of<br/>work</p>
+          </div>
+          <div class="info-item">
+            <h3 class="number" id="completed-projects">+0</h3>
+            <p class="desc">Completed<br/>projects</p>
+          </div>
+          <div class="info-item">
+            <h3 class="number" id="satisfied-clients">0</h3>
+            <p class="desc">Satisfied<br/>customers</p>
+          </div>
+        </div>
+
+        <!-- Skeleton: CV Buttons -->
+        <div id="skeleton-btns" style="display:flex;gap:12px;justify-content:center;margin-top:16px;">
+          <div class="skeleton skeleton-btn"></div>
+          <div class="skeleton skeleton-btn"></div>
+        </div>
+        <!-- Real: CV Buttons -->
+        <div class="profile-btns reveal-scale" id="real-btns" style="transition-delay:600ms; display:none;">
+          <a href="#" class="btn" id="cv-web-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
+            Web Dev CV <i class="ri-download-line"></i>
+          </a>
+          <a href="#" class="btn" id="cv-network-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
+            Network CV <i class="ri-download-line"></i>
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ────────── MAIN CONTENT ────────── -->
+    <main>
+      <div class="container py-4">
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal-left" style="transition-delay:700ms;">
+          <button class="filter-btn active" data-target="#certificates">Certificates</button>
+          <button class="filter-btn" data-target="#projects">Projects</button>
+          <button class="filter-btn" data-target="#skills">Skills</button>
+        </div>
+
+        <!-- ══════ CERTIFICATES SECTION ══════ -->
+        <section id="certificates">
+
+          <!-- Certificate Category Tabs -->
+          <ul class="nav nav-pills cert-tabs justify-content-center mb-5 reveal-right" id="certTab" role="tablist" style="transition-delay:800ms;">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="web-tab" data-bs-toggle="pill" data-bs-target="#pane-web"
+                      type="button" role="tab" aria-controls="pane-web" aria-selected="true">
+                <i class="ri-code-s-slash-line me-2"></i>Programming &amp; Development
+              </button>
+            </li>
+            <li class="nav-item" role="presentation" id="cert-tab-net-li">
+              <button class="nav-link" id="net-tab" data-bs-toggle="pill" data-bs-target="#pane-net"
+                      type="button" role="tab" aria-controls="pane-net" aria-selected="false">
+                <i class="ri-shield-keyhole-line me-2"></i>Networking &amp; Cyber Security
+              </button>
+            </li>
+          </ul>
+
+          <!-- Certificate Tab Panes -->
+          <div class="tab-content cert-tab-content" id="certTabContent">
+
+            <!-- Programming Pane -->
+            <div class="tab-pane fade show active" id="pane-web" role="tabpanel" aria-labelledby="web-tab">
+              <div class="row g-4" id="cert-grid-web">
+                <!-- Skeleton: 3 certificate cards -->
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="skeleton-cert-card">
+                    <div class="skeleton skeleton-cert-img"></div>
+                    <div class="skeleton-cert-body">
+                      <div class="skeleton skeleton-title" style="width:80%;"></div>
+                      <div class="skeleton skeleton-text"></div>
+                      <div class="skeleton skeleton-text-sm"></div>
+                      <div class="skeleton skeleton-btn" style="width:100%;margin-top:12px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="skeleton-cert-card">
+                    <div class="skeleton skeleton-cert-img"></div>
+                    <div class="skeleton-cert-body">
+                      <div class="skeleton skeleton-title" style="width:65%;"></div>
+                      <div class="skeleton skeleton-text"></div>
+                      <div class="skeleton skeleton-text-sm"></div>
+                      <div class="skeleton skeleton-btn" style="width:100%;margin-top:12px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="skeleton-cert-card">
+                    <div class="skeleton skeleton-cert-img"></div>
+                    <div class="skeleton-cert-body">
+                      <div class="skeleton skeleton-title" style="width:75%;"></div>
+                      <div class="skeleton skeleton-text"></div>
+                      <div class="skeleton skeleton-text-sm"></div>
+                      <div class="skeleton skeleton-btn" style="width:100%;margin-top:12px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Networking Pane -->
+            <div class="tab-pane fade" id="pane-net" role="tabpanel" aria-labelledby="net-tab">
+              <div class="row g-4" id="cert-grid-net">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="skeleton-cert-card">
+                    <div class="skeleton skeleton-cert-img"></div>
+                    <div class="skeleton-cert-body">
+                      <div class="skeleton skeleton-title" style="width:70%;"></div>
+                      <div class="skeleton skeleton-text"></div>
+                      <div class="skeleton skeleton-text-sm"></div>
+                      <div class="skeleton skeleton-btn" style="width:100%;margin-top:12px;"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="skeleton-cert-card">
+                    <div class="skeleton skeleton-cert-img"></div>
+                    <div class="skeleton-cert-body">
+                      <div class="skeleton skeleton-title" style="width:60%;"></div>
+                      <div class="skeleton skeleton-text"></div>
+                      <div class="skeleton skeleton-text-sm"></div>
+                      <div class="skeleton skeleton-btn" style="width:100%;margin-top:12px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ══════ PROJECTS SECTION ══════ -->
+        <section id="projects" style="display:none;">
+          <div class="row g-4" id="projects-grid">
+            <!-- Skeleton: 3 project cards -->
+            <div class="col-12 col-md-6">
+              <div class="skeleton-card">
+                <div class="skeleton skeleton-img"></div>
+                <div class="skeleton-card-body">
+                  <div class="skeleton skeleton-title"></div>
+                  <div class="skeleton skeleton-text"></div>
+                  <div class="skeleton skeleton-text"></div>
+                  <div class="skeleton skeleton-text-sm"></div>
+                  <div style="display:flex;gap:8px;margin-top:12px;">
+                    <div class="skeleton skeleton-badge"></div>
+                    <div class="skeleton skeleton-badge"></div>
+                    <div class="skeleton skeleton-badge"></div>
+                  </div>
+                  <div class="skeleton skeleton-btn" style="width:100%;margin-top:16px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="skeleton-card">
+                <div class="skeleton skeleton-img"></div>
+                <div class="skeleton-card-body">
+                  <div class="skeleton skeleton-title" style="width:60%;"></div>
+                  <div class="skeleton skeleton-text"></div>
+                  <div class="skeleton skeleton-text"></div>
+                  <div class="skeleton skeleton-text-sm"></div>
+                  <div style="display:flex;gap:8px;margin-top:12px;">
+                    <div class="skeleton skeleton-badge"></div>
+                    <div class="skeleton skeleton-badge"></div>
+                  </div>
+                  <div class="skeleton skeleton-btn" style="width:100%;margin-top:16px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="skeleton-card">
+                <div class="skeleton skeleton-img"></div>
+                <div class="skeleton-card-body">
+                  <div class="skeleton skeleton-title" style="width:75%;"></div>
+                  <div class="skeleton skeleton-text"></div>
+                  <div class="skeleton skeleton-text-sm"></div>
+                  <div style="display:flex;gap:8px;margin-top:12px;">
+                    <div class="skeleton skeleton-badge"></div>
+                    <div class="skeleton skeleton-badge"></div>
+                    <div class="skeleton skeleton-badge"></div>
+                  </div>
+                  <div class="skeleton skeleton-btn" style="width:100%;margin-top:16px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══════ SKILLS SECTION ══════ -->
+        <section id="skills" style="display:none;">
+          <div id="skills-container">
+            <!-- Skeleton: Skills category + 4 skill cards -->
+            <div class="skill-category-container">
+              <div class="skill-category-divider">
+                <div class="skeleton skeleton-badge" style="width:160px;height:36px;border-radius:50px;"></div>
+              </div>
+              <div class="row g-4">
+                <div class="col-12 col-md-6">
+                  <div class="skeleton-skill-card">
+                    <div style="display:flex;gap:16px;margin-bottom:16px;">
+                      <div class="skeleton skeleton-skill-icon"></div>
+                      <div style="flex:1;">
+                        <div class="skeleton skeleton-title" style="width:60%;height:18px;margin-bottom:8px;"></div>
+                        <div class="skeleton skeleton-text-sm" style="width:40%;"></div>
+                      </div>
+                    </div>
+                    <div class="skeleton skeleton-text-xs" style="width:90px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-skill-bar"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="skeleton-skill-card">
+                    <div style="display:flex;gap:16px;margin-bottom:16px;">
+                      <div class="skeleton skeleton-skill-icon"></div>
+                      <div style="flex:1;">
+                        <div class="skeleton skeleton-title" style="width:50%;height:18px;margin-bottom:8px;"></div>
+                        <div class="skeleton skeleton-text-sm" style="width:35%;"></div>
+                      </div>
+                    </div>
+                    <div class="skeleton skeleton-text-xs" style="width:90px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-skill-bar"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="skeleton-skill-card">
+                    <div style="display:flex;gap:16px;margin-bottom:16px;">
+                      <div class="skeleton skeleton-skill-icon"></div>
+                      <div style="flex:1;">
+                        <div class="skeleton skeleton-title" style="width:55%;height:18px;margin-bottom:8px;"></div>
+                        <div class="skeleton skeleton-text-sm" style="width:45%;"></div>
+                      </div>
+                    </div>
+                    <div class="skeleton skeleton-text-xs" style="width:90px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-skill-bar"></div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="skeleton-skill-card">
+                    <div style="display:flex;gap:16px;margin-bottom:16px;">
+                      <div class="skeleton skeleton-skill-icon"></div>
+                      <div style="flex:1;">
+                        <div class="skeleton skeleton-title" style="width:65%;height:18px;margin-bottom:8px;"></div>
+                        <div class="skeleton skeleton-text-sm" style="width:30%;"></div>
+                      </div>
+                    </div>
+                    <div class="skeleton skeleton-text-xs" style="width:90px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-skill-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- ────────── HIRE ME SECTION ────────── -->
+    <HireMe />
+
+    <!-- ────────── FOOTER ────────── -->
+    <Footer />
+
+  </div>
+
+  <!-- ══════ FILTER TABS LOGIC (inline, no API) ══════ -->
+  <script is:inline>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['#certificates', '#projects', '#skills'].forEach(s => {
+          document.querySelector(s).style.display = 'none';
+        });
+        document.querySelector(btn.dataset.target).style.display = 'block';
+      });
+    });
+  </script>
+
+  <!-- Main App Logic -->
+  <script src="../scripts/app.js"></script>
+
+</BaseLayout>

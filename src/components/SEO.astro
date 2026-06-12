@@ -1,0 +1,93 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  url?: string;
+}
+
+const {
+  title = 'Mohamed Emad Ali | محمد عماد علي — DevOps & Network Engineer & Freelance Developer',
+  description = 'Mohamed Emad Ali (محمد عماد علي) — DevOps & Network Engineer and Freelance Web Developer based in Giza, Egypt. Specialized in backend development, network infrastructure, and cybersecurity. | بورتفوليو المهندس محمد عماد علي — مهندس شبكات وعمليات تطوير ومطور ويب مستقل',
+  image = 'https://folio.iceiy.com/images/og-image.jpg',
+  url = 'https://folio.iceiy.com',
+} = Astro.props;
+
+const keywords = [
+  'Mohamed Emad Ali', 'Mohamed Emad', 'DevOps Engineer', 'Network Engineer',
+  'Freelance Developer', 'Laravel developer', 'backend developer', 'web developer',
+  'hire freelance developer', 'IT consultant', 'infrastructure engineer', 'cybersecurity',
+  'PHP developer', 'full stack developer', 'freelance web developer Egypt',
+  'server administration', 'CI/CD', 'cloud deployment', 'Linux engineer',
+  'محمد عماد علي', 'مهندس محمد عماد', 'محمد عماد', 'مهندس شبكات',
+  'مهندس DevOps', 'مطور ويب مستقل', 'استشارات تقنية', 'مهندس بنية تحتية',
+  'مطور لارافيل', 'مبرمج مستقل', 'مطور ويب', 'مهندس برمجيات',
+  'تطوير مواقع', 'برمجة مواقع', 'مبرمج ويب مصر', 'مطور باك اند',
+  'هندسة شبكات', 'أمن سيبراني', 'استضافة مواقع', 'مبرمج فري لانسر',
+].join(', ');
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  'name': 'Mohamed Emad Ali',
+  'alternateName': ['محمد عماد علي', 'مهندس محمد عماد'],
+  'jobTitle': ['DevOps & Network Engineer', 'Freelance Developer'],
+  'description': 'DevOps & Network Engineer and Freelance Web Developer based in Giza, Egypt. Specialized in backend development, network infrastructure, and cybersecurity.',
+  'url': 'https://folio.iceiy.com',
+  'image': image,
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': 'Giza',
+    'addressRegion': 'Giza',
+    'addressCountry': 'EG',
+  },
+  'knowsAbout': ['DevOps','Network Engineering','Laravel','PHP','Backend Development','Cybersecurity','Linux','Cloud Infrastructure','CI/CD','Docker','Server Administration'],
+  'makesOffer': [
+    { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'Freelance Web Development', 'description': 'Custom web application development using Laravel, PHP, and modern technologies' } },
+    { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'DevOps & Infrastructure Consulting', 'description': 'Server setup, CI/CD pipelines, cloud infrastructure, and network engineering services' } },
+    { '@type': 'Offer', 'itemOffered': { '@type': 'Service', 'name': 'IT & Cybersecurity Consulting', 'description': 'Network security assessment, infrastructure audit, and technical consulting' } },
+  ],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': 'Mohamed Emad Ali — Portfolio',
+  'alternateName': 'بورتفوليو محمد عماد علي',
+  'url': 'https://folio.iceiy.com',
+  'inLanguage': ['en', 'ar'],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Mohamed Emad Ali | محمد عماد علي" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href={url} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:site_name" content="Mohamed Emad Ali — Portfolio" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_EG" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<link rel="alternate" hreflang="en" href={url} />
+<link rel="alternate" hreflang="ar" href={url} />
+<link rel="alternate" hreflang="x-default" href={url} />
+
+<meta name="geo.region" content="EG-GZ" />
+<meta name="geo.placename" content="Giza, Egypt" />
+<meta name="theme-color" content="#06b6d4" />
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />

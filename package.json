@@ -1,0 +1,18 @@
+{
+  "name": "portfolio-frontend",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Mohamed Emad Ali — Portfolio Frontend (Astro SSG)",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^6.4.6"
+  }
+}

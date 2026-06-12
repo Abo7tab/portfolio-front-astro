@@ -1,0 +1,236 @@
+<!-- Hire Me / Freelance Services Section -->
+<section id="hire-me" class="hire-section reveal-up">
+  <div class="container py-5">
+
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+      <h2 class="hire-heading reveal-scale">Need Help with Your Project?</h2>
+      <p class="hire-subheading reveal-up" dir="rtl">تحتاج مساعدة في مشروعك أو هندسة النظام؟</p>
+      <p class="hire-desc reveal-up">
+        I offer professional freelance services in web development, DevOps, and network engineering.
+        <br />
+        <span dir="rtl">أقدم خدمات احترافية في تطوير الويب والبنية التحتية وهندسة الشبكات</span>
+      </p>
+    </div>
+
+    <!-- Service Cards -->
+    <div class="row g-4 mb-5">
+      <!-- Web Development -->
+      <div class="col-12 col-md-4">
+        <div class="hire-card reveal-scale" style="transition-delay: 100ms;">
+          <div class="hire-card-icon">
+            <i class="ri-global-line"></i>
+          </div>
+          <h3 class="hire-card-title">Web Development</h3>
+          <p class="hire-card-title-ar" dir="rtl">تطوير المواقع</p>
+          <p class="hire-card-desc">Custom web apps, APIs, and backend systems using Laravel & modern technologies.</p>
+          <p class="hire-card-desc-ar" dir="rtl">تطبيقات ويب مخصصة وأنظمة خلفية باستخدام Laravel والتقنيات الحديثة</p>
+        </div>
+      </div>
+
+      <!-- DevOps & Infrastructure -->
+      <div class="col-12 col-md-4">
+        <div class="hire-card reveal-scale" style="transition-delay: 200ms;">
+          <div class="hire-card-icon">
+            <i class="ri-server-line"></i>
+          </div>
+          <h3 class="hire-card-title">DevOps & Infrastructure</h3>
+          <p class="hire-card-title-ar" dir="rtl">البنية التحتية والعمليات</p>
+          <p class="hire-card-desc">Server setup, CI/CD pipelines, cloud deployment, and infrastructure management.</p>
+          <p class="hire-card-desc-ar" dir="rtl">إعداد السيرفرات والنشر السحابي وإدارة البنية التحتية</p>
+        </div>
+      </div>
+
+      <!-- Network & Security -->
+      <div class="col-12 col-md-4">
+        <div class="hire-card reveal-scale" style="transition-delay: 300ms;">
+          <div class="hire-card-icon">
+            <i class="ri-shield-check-line"></i>
+          </div>
+          <h3 class="hire-card-title">Network & Security</h3>
+          <p class="hire-card-title-ar" dir="rtl">الشبكات والأمان</p>
+          <p class="hire-card-desc">Network design, security audits, vulnerability assessment, and IT consulting.</p>
+          <p class="hire-card-desc-ar" dir="rtl">تصميم الشبكات وتقييم الأمان واستشارات تقنية</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="text-center reveal-up" style="transition-delay: 400ms;">
+      <a href="#" class="hire-cta-btn hire-cta-whatsapp" id="hire-whatsapp-btn">
+        <i class="ri-whatsapp-line"></i> Let's Talk on WhatsApp
+      </a>
+      <a href="#" class="hire-cta-btn hire-cta-email" id="hire-email-btn">
+        <i class="ri-mail-send-line"></i> Send an Email
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hire-section {
+    padding: 4rem 0;
+    position: relative;
+  }
+
+  .hire-heading {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 25px var(--accent-glow, rgba(6, 182, 212, 0.5));
+  }
+
+  .hire-subheading {
+    font-size: 1.15rem;
+    color: var(--accent, #06b6d4);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hire-desc {
+    color: var(--txt-muted, #cbd5e1);
+    font-size: 0.95rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .hire-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.05));
+    backdrop-filter: var(--glass-blur, blur(25px) saturate(200%));
+    -webkit-backdrop-filter: var(--glass-blur, blur(25px) saturate(200%));
+    border: 1px solid var(--glass-border, rgba(6, 182, 212, 0.2));
+    border-radius: var(--radius, 20px);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hire-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent, #06b6d4), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .hire-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent, #06b6d4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow-03, rgba(6, 182, 212, 0.3));
+  }
+
+  .hire-card:hover::before {
+    opacity: 1;
+  }
+
+  .hire-card-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--accent-glow-01, rgba(6, 182, 212, 0.1));
+    border: 2px solid var(--accent-glow-03, rgba(6, 182, 212, 0.3));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: var(--accent, #06b6d4);
+    transition: 0.4s;
+  }
+
+  .hire-card:hover .hire-card-icon {
+    background: var(--accent, #06b6d4);
+    color: #000;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px var(--accent-glow, rgba(6, 182, 212, 0.5));
+  }
+
+  .hire-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .hire-card-title-ar {
+    font-size: 0.9rem;
+    color: var(--accent, #06b6d4);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hire-card-desc {
+    font-size: 0.88rem;
+    color: var(--txt-muted, #cbd5e1);
+    line-height: 1.6;
+    margin-bottom: 0.25rem;
+  }
+
+  .hire-card-desc-ar {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+  }
+
+  .hire-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+  }
+
+  .hire-cta-whatsapp {
+    background: #25D366;
+    color: #fff !important;
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+  }
+
+  .hire-cta-whatsapp:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+    background: #20c05c;
+    color: #fff !important;
+  }
+
+  .hire-cta-email {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.05));
+    border: 2px solid var(--accent, #06b6d4);
+    color: var(--accent, #06b6d4) !important;
+    backdrop-filter: blur(10px);
+  }
+
+  .hire-cta-email:hover {
+    background: var(--accent, #06b6d4);
+    color: #000 !important;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px var(--accent-glow, rgba(6, 182, 212, 0.5));
+  }
+
+  @media (max-width: 600px) {
+    .hire-heading {
+      font-size: 1.6rem;
+    }
+    .hire-cta-btn {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+  }
+</style>

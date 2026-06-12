@@ -1,0 +1,164 @@
+[31m[1m18:16:35[22m [ERROR] [vite][39m [31mhttp proxy error: /api/personal-info[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:16:35[22m [ERROR] [vite][39m [31mhttp proxy error: /api/certificates[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:21:11[22m [ERROR] [vite][39m [31mhttp proxy error: /api/certificates[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:21:11[22m [ERROR] [vite][39m [31mhttp proxy error: /api/projects[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:21:11[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:39:39[22m [ERROR] [vite][39m [31mhttp proxy error: /api/skills[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:39:39[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:40:00[22m [ERROR] [vite][39m [31mhttp proxy error: /api/skills[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m18:40:01[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:13:10[22m [ERROR] [vite][39m [31mhttp proxy error: /api/projects[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:13:10[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:43:42[22m [ERROR] [vite][39m [31mhttp proxy error: /api/personal-info[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:43:42[22m [ERROR] [vite][39m [31mhttp proxy error: /api/skills[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:43:42[22m [ERROR] [vite][39m [31mhttp proxy error: /api/projects[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:43:42[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:44:11[22m [ERROR] [vite][39m [31mhttp proxy error: /api/personal-info[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m19:44:11[22m [ERROR] [vite][39m [31mhttp proxy error: /api/social-links[39m
+Error: connect ETIMEDOUT 185.31.40.29:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1645:16)
+[31m[1m21:12:30[22m [ERROR] [vite][39m [31mInternal server error: [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:946:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mD:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css[39m:946:0
+[33m  944 |  }
+  945 |  
+  946 |  }
+      |  ^
+  947 |  
+  948 |  .main-wrapper.loaded {[39m
+      at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:463:16)
+      at parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\lazy-result.js:165:16)
+      at Processor.process (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30225:68)
+      at async compilePostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30209:6)
+      at async compileCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30139:26)
+[31m[1m21:12:49[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:946:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:12:51[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:946:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:12:51[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:946:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:13:41[22m [ERROR] [vite][39m [31mInternal server error: [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:9:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mD:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css[39m:9:0
+[33m  7  |  /* ---- Safe Background Layering ---- */
+  8  |    box-sizing: border-box;
+  9  |  }
+     |  ^
+  10 |  
+  11 |  :root {[39m
+      at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:463:16)
+      at parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\lazy-result.js:165:16)
+      at Processor.process (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30225:68)
+      at async compilePostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30209:6)
+      at async compileCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30139:26)
+[31m[1m21:14:25[22m [ERROR] [vite][39m [31mInternal server error: [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }[39m
+  Plugin: [35mvite:css[39m
+  File: [36mD:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css[39m:945:0
+[33m  943 |  }
+  944 |  
+  945 |  }
+      |  ^
+  946 |  
+  947 |  .main-wrapper.loaded {[39m
+      at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+      at Parser.unexpectedClose (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:594:22)
+      at Parser.end (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:337:12)
+      at Parser.parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parser.js:463:16)
+      at parse (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\parse.js:11:12)
+      at new LazyResult (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\lazy-result.js:165:16)
+      at Processor.process (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\processor.js:53:14)
+      at runPostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30225:68)
+      at async compilePostCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30209:6)
+      at async compileCSS (file:///D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/node_modules/vite/dist/node/chunks/config.js:30139:26)
+[31m[1m21:14:54[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:15:23[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:15:29[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:15:30[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:15:30[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:15:49[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:18:18[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:18:19[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:19:31[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:19:34[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m
+[31m[1m21:21:09[22m [ERROR][39m [postcss] D:/projects/OnLine/portfolio/API/portfolio-app/front-astro/src/styles/global.css:945:1: Unexpected }
+  [1mStack trace:[22m
+[2m    at Input.error (D:\projects\OnLine\portfolio\API\portfolio-app\front-astro\node_modules\postcss\lib\input.js:135:16)
+    [...] See full stack trace in the browser, or rerun with --verbose.[22m

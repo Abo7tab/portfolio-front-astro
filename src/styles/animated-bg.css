@@ -1,0 +1,35 @@
+/* ═══════════════════════════════════════════
+   Floating Background Icons
+   ═══════════════════════════════════════════ */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-icon {
+  position: absolute;
+  bottom: -60px;
+  color: var(--accent-glow-012, rgba(6, 182, 212, 0.12));
+  font-size: 28px;
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 6px var(--accent-glow-012, rgba(6, 182, 212, 0.12)));
+}
+
+.floating-icon:nth-child(1) { left: 5%;  font-size: 22px; animation-duration: 25s; animation-delay: 0s; }
+.floating-icon:nth-child(2) { left: 15%; font-size: 30px; animation-duration: 30s; animation-delay: 3s; }
+.floating-icon:nth-child(3) { left: 28%; font-size: 26px; animation-duration: 28s; animation-delay: 5s; }
+.floating-icon:nth-child(4) { left: 42%; font-size: 20px; animation-duration: 35s; animation-delay: 2s; }
+.floating-icon:nth-child(5) { left: 55%; font-size: 32px; animation-duration: 22s; animation-delay: 7s; }
+.floating-icon:nth-child(6) { left: 68%; font-size: 24px; animation-duration: 40s; animation-delay: 1s; }
+.floating-icon:nth-child(7) { left: 80%; font-size: 28px; animation-duration: 20s; animation-delay: 4s; }
+.floating-icon:nth-child(8) { left: 92%; font-size: 22px; animation-duration: 33s; animation-delay: 6s; }
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-125vh) rotate(360deg); opacity: 0; }
+}
