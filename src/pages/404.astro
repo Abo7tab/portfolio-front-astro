@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 | System Not Found" description="Error 404 - Page not found on Mohamed Emad Ali's portfolio.">
+  <div class="error-container">
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <span class="btn close"></span>
+        <span class="btn min"></span>
+        <span class="btn max"></span>
+        <span class="title">mohamed@devops-server:~</span>
+      </div>
+      <div class="terminal-body" id="error-terminal">
+        <div class="terminal-line error-line">[FATAL ERROR] 404 - System Not Found.</div>
+        <div class="terminal-line error-line">Connection refused on requested port.</div>
+        <div class="terminal-line">> initiating trace route... Failed.</div>
+        <div class="terminal-line">> The requested directory does not exist or has been moved.</div>
+        <div class="terminal-line action-line">
+          <a href="/" class="return-btn">[RETURN_TO_BASE]</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0b0f19; /* matches global bg */
+    padding: 1rem;
+  }
+
+  .terminal-box {
+    width: 100%;
+    max-width: 600px;
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+
+  .terminal-header {
+    background-color: #1f2937;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .terminal-header .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-header .btn.close { background-color: #ef4444; }
+  .terminal-header .btn.min { background-color: #f59e0b; }
+  .terminal-header .btn.max { background-color: #10b981; }
+
+  .terminal-header .title {
+    margin-left: auto;
+    margin-right: auto;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    font-family: monospace;
+  }
+
+  .terminal-body {
+    padding: 2rem 1.5rem;
+    font-family: monospace;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #10b981;
+  }
+
+  .error-line {
+    color: #ef4444;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.5);
+  }
+
+  .action-line {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .return-btn {
+    display: inline-block;
+    color: #10b981;
+    text-decoration: none;
+    border: 1px solid #10b981;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .return-btn:hover {
+    background-color: #10b981;
+    color: #0b0f19;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  }
+</style>
