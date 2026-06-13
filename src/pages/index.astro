@@ -5,25 +5,9 @@ import Preloader from '../components/Preloader.astro';
 import HireMe from '../components/HireMe.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
-
-// Fetch profile data at build time for LCP optimization
-let preloadImageUrl = null;
-try {
-  const res = await fetch('https://folio.alwaysdata.net/api/profile');
-  if (res.ok) {
-    const json = await res.json();
-    if (json.data && json.data.profile_image) {
-      preloadImageUrl = json.data.profile_image.startsWith('http') 
-        ? json.data.profile_image 
-        : `https://folio.alwaysdata.net${json.data.profile_image}`;
-    }
-  }
-} catch (e) {
-  console.warn('Failed to fetch profile image for preload during build');
-}
 ---
 
-<BaseLayout preloadImage={preloadImageUrl}>
+<BaseLayout>
 
   <!-- Preloader -->
   <Preloader />
