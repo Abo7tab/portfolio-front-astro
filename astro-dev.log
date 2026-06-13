@@ -137,3 +137,6 @@
 [vite] connected.
 [2m23:59:12[22m [34m[vite][39m Re-optimizing dependencies because lockfile has changed
 [2m23:59:12[22m [34m[vite][39m server restarted.
+[2m00:03:55[22m [34m[watch][39m public/admin/index.html
+[2m00:04:06[22m [34m[watch][39m public/admin/index.html
+[2m00:04:45[22m [34m[watch][39m public/admin/login.html
