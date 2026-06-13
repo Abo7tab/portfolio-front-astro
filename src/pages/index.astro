@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import AnimatedBg from '../components/AnimatedBg.astro';
 import Preloader from '../components/Preloader.astro';
+import CanvasBackground from '../components/ui/CanvasBackground';
 import HireMe from '../components/HireMe.astro';
 import Footer from '../components/Footer.astro';
 import Modals from '../components/Modals.astro';
@@ -12,11 +12,11 @@ import Modals from '../components/Modals.astro';
   <!-- Preloader -->
   <Preloader />
 
+  <!-- 3D Shader Background (React) -->
+  <CanvasBackground client:load />
+
   <!-- Modals -->
   <Modals />
-
-  <!-- Background Layers -->
-  <AnimatedBg />
 
   <!-- ══════════════════════════════════════
        Main Wrapper (hidden until loaded)
