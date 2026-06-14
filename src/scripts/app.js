@@ -610,14 +610,26 @@ async function loadCertificates() {
 // =============================================
 // Theme Color — Dynamic CSS Variables
 // =============================================
-function applyThemeColor(hex) {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+function applyThemeColor(themeColorRaw) {
+  if (!themeColorRaw) return;
+  
+  let mainHex = themeColorRaw;
+  let bgHex = '#031B28'; // Default background color
+  
+  if (themeColorRaw.includes(',')) {
+    const parts = themeColorRaw.split(',');
+    mainHex = parts[0];
+    bgHex = parts[1];
+  }
+
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(mainHex);
   if (!result) return;
   const r = parseInt(result[1], 16);
   const g = parseInt(result[2], 16);
   const b = parseInt(result[3], 16);
   const root = document.documentElement;
-  root.style.setProperty('--accent', hex);
+  root.style.setProperty('--accent', mainHex);
+  root.style.setProperty('--bg-accent', bgHex);
   root.style.setProperty('--accent-glow', `rgba(${r},${g},${b},0.4)`);
   root.style.setProperty('--accent-glow-01', `rgba(${r},${g},${b},0.1)`);
   root.style.setProperty('--accent-glow-012', `rgba(${r},${g},${b},0.12)`);
@@ -628,7 +640,9 @@ function applyThemeColor(hex) {
   root.style.setProperty('--accent-glow-05', `rgba(${r},${g},${b},0.5)`);
   root.style.setProperty('--accent-glow-08', `rgba(${r},${g},${b},0.8)`);
   root.style.setProperty('--glass-border', `rgba(${r},${g},${b},0.2)`);
-  localStorage.setItem('theme_accent', hex);
+  
+  localStorage.setItem('theme_accent', mainHex);
+  localStorage.setItem('theme_bg_accent', bgHex);
 }
 
 // =============================================

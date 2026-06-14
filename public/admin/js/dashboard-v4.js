@@ -985,17 +985,27 @@ window.deleteCertificate = async (id) => {
 async function renderProfile(container) {
     const response = await API.getPersonalInfo();
     const info = response.data || {};
-
     const socialsResponse = await API.getSocialLinks();
     const socials = socialsResponse.data || [];
 
-    // Auto-count completed projects from the projects API
     let projectCount = info.completed_projects || 0;
     try {
         const projRes = await API.getProjects();
         const projects = projRes.data || [];
         projectCount = projects.length;
     } catch (e) { }
+
+    let mainThemeColor = '#06b6d4';
+    let bgThemeColor = '#031B28';
+    if (info.theme_color) {
+        if (info.theme_color.includes(',')) {
+            const parts = info.theme_color.split(',');
+            mainThemeColor = parts[0];
+            bgThemeColor = parts[1];
+        } else {
+            mainThemeColor = info.theme_color;
+        }
+    }
 
     container.innerHTML = '';
 
@@ -1086,8 +1096,8 @@ async function renderProfile(container) {
             </div>
             <div class="col-12">
                 <div class="d-flex align-items-center gap-3 flex-wrap">
-                    <input type="color" class="form-control form-control-color" name="theme_color" 
-                           value="${info.theme_color || '#06b6d4'}" id="themeColorPicker"
+                    <input type="color" class="form-control form-control-color" name="theme_color_main" 
+                           value="${mainThemeColor}" id="themeColorPicker"
                            title="Pick accent color" style="height:54px; width:80px; cursor:pointer;">
                     <div class="d-flex gap-2 flex-wrap" id="colorPresets">
                         <button type="button" class="color-swatch" data-color="#06b6d4" style="background:#06b6d4;" title="Cyan (Default)"></button>
@@ -1106,6 +1116,27 @@ async function renderProfile(container) {
                         transition: all 0.3s ease;
                     ">
                         ✦ Preview Color
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🖤 Background Mesh Color -->
+            <div class="col-12"><hr><h5 class="fw-bold mb-1">🖤 Background Mesh Color</h5>
+                <small class="text-muted d-block mb-3">Changes the secondary color mixed with black in the animated background</small>
+            </div>
+            <div class="col-12">
+                <div class="d-flex align-items-center gap-3 flex-wrap">
+                    <input type="color" class="form-control form-control-color" name="theme_color_bg" 
+                           value="${bgThemeColor}" id="themeBgColorPicker"
+                           title="Pick background color" style="height:54px; width:80px; cursor:pointer;">
+                    
+                    <div id="bgColorPreview" style="
+                        width:200px; height:54px; border-radius:12px; display:flex; align-items:center;
+                        justify-content:center; font-weight:700; font-size:0.85rem; border:2px solid;
+                        background: ${bgThemeColor}; color:#fff; border-color:#000;
+                        transition: all 0.3s ease;
+                    ">
+                        ✦ Background Color
                     </div>
                 </div>
                 <style>
@@ -1149,17 +1180,29 @@ async function renderProfile(container) {
         swatches.forEach(s => s.classList.toggle('active', s.dataset.color === hex));
     }
     // Set initial active swatch
-    updatePreview(info.theme_color || '#06b6d4');
+    updatePreview(mainThemeColor);
 
     picker.addEventListener('input', () => updatePreview(picker.value));
     swatches.forEach(s => {
         s.addEventListener('click', () => updatePreview(s.dataset.color));
     });
 
+    const bgPicker = document.getElementById('themeBgColorPicker');
+    const bgPreview = document.getElementById('bgColorPreview');
+    bgPicker.addEventListener('input', () => {
+        bgPreview.style.background = bgPicker.value;
+    });
+
     document.getElementById('profileForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = e.target.querySelector('button[type="submit"]');
         const formData = new FormData(e.target);
+        
+        const mainColor = formData.get('theme_color_main') || '#06b6d4';
+        const bgColor = formData.get('theme_color_bg') || '#031B28';
+        formData.set('theme_color', `${mainColor},${bgColor}`);
+        formData.delete('theme_color_main');
+        formData.delete('theme_color_bg');
         
         await wrapSubmit(btn, async () => {
             try {

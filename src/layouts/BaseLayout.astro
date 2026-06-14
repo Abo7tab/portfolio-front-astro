@@ -85,13 +85,15 @@ const {
   <script is:inline>
     (function () {
       var cachedHex = localStorage.getItem('theme_accent');
+      var cachedBgHex = localStorage.getItem('theme_bg_accent') || '#031B28';
+      var s = document.documentElement.style;
+      s.setProperty('--bg-accent', cachedBgHex);
       if (cachedHex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(cachedHex);
         if (result) {
           var r = parseInt(result[1], 16);
           var g = parseInt(result[2], 16);
           var b = parseInt(result[3], 16);
-          var s = document.documentElement.style;
           s.setProperty('--accent', cachedHex);
           s.setProperty('--accent-glow', 'rgba('+r+','+g+','+b+',0.4)');
           s.setProperty('--accent-glow-01', 'rgba('+r+','+g+','+b+',0.1)');
