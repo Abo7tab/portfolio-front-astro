@@ -46,11 +46,28 @@ export default function CanvasBackground() {
         overflow: "hidden"
       }}
     >
-      <MeshGradient
-        colors={colors}
-        speed={speed * 0.5}
-        style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-      />
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          inset: 0,
+          animation: "breatheBlack 8s ease-in-out infinite"
+        }}
+      >
+        <MeshGradient
+          colors={colors}
+          speed={speed * 0.5}
+          style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
+        />
+      </div>
+
+      <style>{`
+        @keyframes breatheBlack {
+          0%, 100% { opacity: 0.9; }
+          45%, 55% { opacity: 0.05; }
+        }
+      `}</style>
     </div>
   )
 }
