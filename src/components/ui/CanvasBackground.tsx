@@ -20,16 +20,9 @@ export default function CanvasBackground() {
       }}
     >
       <MeshGradient
-        style={{
-          width: "100%",
-          height: "100%",
-          position: "absolute",
-          inset: 0
-        }}
-        colors={["#000000", "#0a0a0a", "#1a1a1a", "#ffffff"]}
+        colors={["#000000", "#1a1a1a", "#333333", "#ffffff"]}
         speed={speed * 0.5}
-        wireframe={true}
-        backgroundColor="#000000"
+        style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
       />
       <div 
         style={{
@@ -41,11 +34,10 @@ export default function CanvasBackground() {
         }}
       >
         <DotOrbit
-          style={{ width: "100%", height: "100%" }}
-          dotColor="#333333"
-          orbitColor="#1a1a1a"
+          colors={["#333333", "#1a1a1a", "#666666", "#444444"]}
+          colorBack="#000000"
           speed={speed * 1.5}
-          intensity={intensity * 0.8}
+          style={{ width: "100%", height: "100%" }}
         />
       </div>
 
