@@ -19,7 +19,7 @@ export default function CanvasBackground() {
       }}
     >
       <MeshGradient
-        colors={["#000000", "#1a1a1a", "#333333", "#ffffff"]}
+        colors={["#000000", "#050505", "#0a0a0a", "#121212"]}
         speed={speed * 0.5}
         style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
       />
