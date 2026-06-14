@@ -1,36 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { MeshGradient } from "@paper-design/shaders-react"
 
 export default function CanvasBackground() {
   const speed = 1.0;
-  const [colors, setColors] = useState(["#000000", "#06b6d4", "#000000", "#035968"]);
 
-  useEffect(() => {
-    const updateColors = () => {
-      const root = document.documentElement;
-      let accent = getComputedStyle(root).getPropertyValue('--accent').trim();
-      if (!accent) {
-         accent = "#06b6d4";
-      }
-      setColors(["#000000", accent, "#000000", accent]);
-    };
-
-    // Initial setup
-    updateColors();
-
-    // Listen for inline style changes on html element (e.g. from backend/theme switcher)
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-          updateColors();
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
-
-    return () => observer.disconnect();
-  }, []);
+  // Dedicated Background Palette: Separate from the site's primary colors.
+  // You can change these colors manually here without affecting the main site theme.
+  const backgroundPalette = [
+    "#000000", // Black
+    "#031B28", // Very dark blue/cyan mix
+    "#000000", // Black
+    "#013A40"  // Deep dark teal
+  ];
 
   return (
     <div
@@ -56,7 +37,7 @@ export default function CanvasBackground() {
         }}
       >
         <MeshGradient
-          colors={colors}
+          colors={backgroundPalette}
           speed={speed * 0.5}
           style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
         />
