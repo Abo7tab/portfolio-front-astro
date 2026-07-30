@@ -9,6 +9,7 @@ html {
   background: #000;
   min-height: 100vh;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -17,6 +18,7 @@ body {
   color: #f8fafc;
   min-height: 100vh;
   margin: 0;
+  overflow-x: hidden;
 }
 
 /* Background gradient as a separate layer for absolute visibility */
