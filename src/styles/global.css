@@ -179,11 +179,7 @@ header {
   margin-bottom: .25rem;
   color: #fff;
   text-shadow: 0 0 25px var(--accent-glow);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
 }
 
 .profession {
@@ -1725,8 +1721,10 @@ header {
   align-items: center;
   flex-shrink: 0;
   cursor: default;
+  vertical-align: middle;
+  margin-left: 6px;
   position: relative;
-  top: -2px;
+  top: -1px;
 }
 
 .fb-verified-icon {
