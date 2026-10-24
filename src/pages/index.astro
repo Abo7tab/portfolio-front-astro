@@ -115,14 +115,6 @@ import Modals from '../components/Modals.astro';
     <main>
       <div class="container py-4">
 
-        <!-- Filter Tabs -->
-        <div class="filter-tabs reveal-left" style="transition-delay:700ms;">
-          <button class="filter-btn active" data-target="#certificates">Certificates</button>
-          <button class="filter-btn" data-target="#projects">Projects</button>
-          <button class="filter-btn" data-target="#skills">Skills</button>
-          <button class="filter-btn" data-target="#experience">Experience</button>
-        </div>
-
         <!-- ══════ CERTIFICATES SECTION ══════ -->
         <section id="certificates">
 
@@ -434,10 +426,9 @@ import Modals from '../components/Modals.astro';
     </div>
   </div>
 
-  <!-- ══════ NAVIGATION & TABS LOGIC ══════ -->
+  <!-- ══════ NAVIGATION & DYNAMIC ISLAND LOGIC ══════ -->
   <script is:inline>
     (function() {
-      const originalTabs = document.querySelector('.filter-tabs');
       const floatingDock = document.getElementById('floating-dock');
       const subPills = document.getElementById('floating-sub-pills');
       const dockWebBtn = document.getElementById('dock-web-btn');
@@ -447,11 +438,6 @@ import Modals from '../components/Modals.astro';
       const dockScrollTop = document.getElementById('dock-scroll-top');
 
       function switchSection(targetId, shouldScroll) {
-        // Update original buttons
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.toggle('active', b.dataset.target === targetId);
-        });
-
         // Update dock buttons
         document.querySelectorAll('.floating-tab-btn').forEach(b => {
           b.classList.toggle('active', b.dataset.target === targetId);
@@ -468,7 +454,7 @@ import Modals from '../components/Modals.astro';
           subPills.style.display = (targetId === '#certificates') ? 'flex' : 'none';
         }
 
-        // Smooth scroll to top of section if triggered from dock
+        // Smooth scroll to top of section if triggered and user is scrolled down
         if (shouldScroll) {
           const sectionEl = document.querySelector(targetId);
           if (sectionEl) {
@@ -478,11 +464,6 @@ import Modals from '../components/Modals.astro';
           }
         }
       }
-
-      // Main filter buttons click
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => switchSection(btn.dataset.target, false));
-      });
 
       // Floating dock buttons click
       document.querySelectorAll('.floating-tab-btn').forEach(btn => {
@@ -521,27 +502,14 @@ import Modals from '../components/Modals.astro';
         });
       }
 
-      // Scroll observer to show/hide dock and seamlessly swap WhatsApp button
+      // Dynamic Island scroll observer: show/hide scroll-to-top button
       let ticking = false;
-      function checkDockVisibility() {
-        if (!originalTabs || !floatingDock) return;
-        const rect = originalTabs.getBoundingClientRect();
-        const waFloat = document.getElementById('whatsapp-float');
-
-        // When original tabs are scrolled past
-        if (rect.bottom < 50) {
-          floatingDock.classList.add('is-visible');
-          if (waFloat) {
-            waFloat.style.opacity = '0';
-            waFloat.style.pointerEvents = 'none';
-            waFloat.style.transform = 'scale(0.5)';
-          }
-        } else {
-          floatingDock.classList.remove('is-visible');
-          if (waFloat) {
-            waFloat.style.opacity = '1';
-            waFloat.style.pointerEvents = 'auto';
-            waFloat.style.transform = 'scale(1)';
+      function handleScroll() {
+        if (dockScrollTop) {
+          if (window.scrollY > 260) {
+            dockScrollTop.classList.add('is-active');
+          } else {
+            dockScrollTop.classList.remove('is-active');
           }
         }
         ticking = false;
@@ -549,10 +517,11 @@ import Modals from '../components/Modals.astro';
 
       window.addEventListener('scroll', () => {
         if (!ticking) {
-          requestAnimationFrame(checkDockVisibility);
+          requestAnimationFrame(handleScroll);
           ticking = true;
         }
       }, { passive: true });
+      handleScroll();
     })();
   </script>
 
