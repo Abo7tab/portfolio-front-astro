@@ -1562,28 +1562,45 @@ header {
     bottom: max(16px, env(safe-area-inset-bottom));
     left: 50%;
     transform: translate(-50%, 0);
-    max-width: calc(100vw - 16px);
+    max-width: calc(100vw - 20px);
   }
 
   .floating-dock-glass {
-    padding: 6px 10px;
+    padding: 6px 8px;
     gap: 4px;
     justify-content: center;
   }
 
+  /* Remove sub-pills (Web & Network) from island on mobile: user uses the big buttons on screen */
+  .floating-sub-pills {
+    display: none !important;
+  }
+
+  /* Inactive tabs show icons only */
+  .floating-tab-btn:not(.active) .dock-text {
+    display: none !important;
+  }
+
+  /* Active tab expands to show its English name with icon */
+  .floating-tab-btn.active {
+    padding: 8px 12px;
+  }
+
+  .floating-tab-btn.active .dock-text {
+    display: inline !important;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
   .floating-tab-btn {
-    padding: 8px 11px;
+    padding: 8px 10px;
     font-size: 0.82rem;
     gap: 4px;
+    border-radius: 9999px;
   }
 
   .floating-tab-btn i {
-    font-size: 1.05rem;
-  }
-
-  .floating-sub-btn {
-    padding: 6px 9px;
-    font-size: 0.74rem;
+    font-size: 1.1rem;
   }
 
   /* WhatsApp button on mobile: compact round icon */
@@ -1610,23 +1627,6 @@ header {
 
   .floating-scroll-top.is-active {
     width: 34px;
-  }
-}
-
-/* Extra small mobile (under 430px) */
-@media (max-width: 430px) {
-  .floating-tab-btn .dock-text {
-    display: none;
-  }
-  .floating-tab-btn {
-    padding: 8px 9px;
-  }
-  .floating-sub-btn .sub-text {
-    display: none;
-  }
-  .floating-dock-glass {
-    padding: 5px 6px;
-    gap: 2px;
   }
 }
 
