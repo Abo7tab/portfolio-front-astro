@@ -137,12 +137,13 @@ class API {
   }
 
   // Public Helpers
-  static async getProjects()     { return this.request('/projects'); }
-  static async getSkills()       { return this.request('/skills'); }
-  static async getCertificates() { return this.request('/certificates'); }
-  static async getCategories()   { return this.request('/categories'); }
-  static async getPersonalInfo() { return this.request('/personal-info'); }
-  static async getSocialLinks()  { return this.request('/social-links'); }
+  static async getProjects()         { return this.request('/projects'); }
+  static async getSkills()           { return this.request('/skills'); }
+  static async getCertificates()     { return this.request('/certificates'); }
+  static async getCategories()       { return this.request('/categories'); }
+  static async getPersonalInfo()     { return this.request('/personal-info'); }
+  static async getSocialLinks()      { return this.request('/social-links'); }
+  static async getWorkExperiences()  { return this.request('/work-experiences'); }
 }
 
 export { API, API_BASE_URL, IMG_BASE_URL };

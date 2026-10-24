@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       loadProjects(),
       loadCertificates(),
       loadSocialLinks(),
+      loadWorkExperiences(),
     ]);
     allDataReady.catch(error => console.error('Portfolio background load error:', error));
 
@@ -716,4 +717,66 @@ function getIconClass(platform) {
   if (p.includes('tiktok')) return 'ri-tiktok-line';
   if (p.includes('telegram')) return 'ri-telegram-line';
   return 'ri-link';
+}
+
+// =============================================
+// 6. Work Experience — Timeline
+// =============================================
+async function loadWorkExperiences() {
+  const container = document.getElementById('experience-container');
+  if (!container) return;
+
+  try {
+    const response = await API.getWorkExperiences();
+    const items = response.data || [];
+
+    if (items.length === 0) {
+      container.innerHTML = '<p class="text-center" style="color:var(--txt-muted);padding:2rem 0;">No work experience added yet.</p>';
+      return;
+    }
+
+    container.innerHTML = items.map((exp, i) => {
+      const logoHtml = exp.logo_url
+        ? `<img src="${exp.logo_url}" alt="${exp.company_name}" class="exp-logo" loading="lazy">`
+        : `<div class="exp-logo-fallback"><i class="ri-building-4-line"></i></div>`;
+
+      const dateRange = exp.is_current
+        ? `${exp.start_date} — <span class="exp-current-badge">Present</span>`
+        : `${exp.start_date} — ${exp.end_date || ''}`;
+
+      const descHtml = exp.description
+        ? `<p class="exp-description">${exp.description}</p>`
+        : '';
+
+      const side = i % 2 === 0 ? 'left' : 'right';
+
+      return `
+        <div class="exp-item exp-${side} reveal-up" style="transition-delay:${i * 100}ms;">
+          <div class="exp-card glass-effect">
+            <div class="exp-header">
+              <div class="exp-logo-wrap">${logoHtml}</div>
+              <div class="exp-meta">
+                <h3 class="exp-position">${exp.position}</h3>
+                <span class="exp-company"><i class="ri-building-line"></i> ${exp.company_name}</span>
+              </div>
+            </div>
+            <div class="exp-date"><i class="ri-calendar-line"></i> ${dateRange}</div>
+            ${descHtml}
+          </div>
+          <div class="exp-dot"></div>
+        </div>`;
+    }).join('');
+
+    observeNewReveals(container);
+
+  } catch (err) {
+    console.error('Failed to load work experiences:', err);
+    if (container) {
+      container.innerHTML = `
+        <div class="data-error">
+          <i class="ri-wifi-off-line"></i>
+          <p>Work experience could not be loaded right now.</p>
+        </div>`;
+    }
+  }
 }

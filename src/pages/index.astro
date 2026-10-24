@@ -120,6 +120,7 @@ import Modals from '../components/Modals.astro';
           <button class="filter-btn active" data-target="#certificates">Certificates</button>
           <button class="filter-btn" data-target="#projects">Projects</button>
           <button class="filter-btn" data-target="#skills">Skills</button>
+          <button class="filter-btn" data-target="#experience">Experience</button>
         </div>
 
         <!-- ══════ CERTIFICATES SECTION ══════ -->
@@ -337,6 +338,44 @@ import Modals from '../components/Modals.astro';
           </div>
         </section>
 
+        <!-- ══════ EXPERIENCE SECTION ══════ -->
+        <section id="experience" style="display:none;">
+          <div class="exp-timeline">
+            <!-- Skeleton: 2 experience cards -->
+            <div class="exp-item exp-left">
+              <div class="exp-card glass-effect">
+                <div class="exp-header">
+                  <div class="skeleton" style="width:56px;height:56px;border-radius:12px;flex-shrink:0;"></div>
+                  <div style="flex:1;">
+                    <div class="skeleton skeleton-title" style="width:60%;height:18px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-text-sm" style="width:40%;"></div>
+                  </div>
+                </div>
+                <div class="skeleton skeleton-text-sm" style="width:50%;margin:0.75rem 0;"></div>
+                <div class="skeleton skeleton-text" style="width:90%;"></div>
+                <div class="skeleton skeleton-text" style="width:75%;margin-top:6px;"></div>
+              </div>
+              <div class="exp-dot"></div>
+            </div>
+            <div class="exp-item exp-right">
+              <div class="exp-card glass-effect">
+                <div class="exp-header">
+                  <div class="skeleton" style="width:56px;height:56px;border-radius:12px;flex-shrink:0;"></div>
+                  <div style="flex:1;">
+                    <div class="skeleton skeleton-title" style="width:55%;height:18px;margin-bottom:8px;"></div>
+                    <div class="skeleton skeleton-text-sm" style="width:35%;"></div>
+                  </div>
+                </div>
+                <div class="skeleton skeleton-text-sm" style="width:45%;margin:0.75rem 0;"></div>
+                <div class="skeleton skeleton-text" style="width:85%;"></div>
+              </div>
+              <div class="exp-dot"></div>
+            </div>
+          </div>
+          <!-- Real: filled by JS -->
+          <div class="exp-timeline" id="experience-container"></div>
+        </section>
+
       </div>
     </main>
 
@@ -354,7 +393,7 @@ import Modals from '../components/Modals.astro';
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        ['#certificates', '#projects', '#skills'].forEach(s => {
+        ['#certificates', '#projects', '#skills', '#experience'].forEach(s => {
           document.querySelector(s).style.display = 'none';
         });
         document.querySelector(btn.dataset.target).style.display = 'block';

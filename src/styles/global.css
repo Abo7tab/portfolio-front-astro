@@ -1212,3 +1212,160 @@ header {
   font-weight: 600;
 }
 
+
+/* =====================================================
+   Work Experience — Timeline
+   ===================================================== */
+
+.exp-timeline {
+  position: relative;
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Center vertical line */
+.exp-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+/* Each timeline item */
+.exp-item {
+  position: relative;
+  width: 46%;
+  margin-bottom: 2.5rem;
+}
+
+.exp-item.exp-left  { margin-right: auto; }
+.exp-item.exp-right { margin-left: auto; }
+
+/* Dot on the center line */
+.exp-dot {
+  position: absolute;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  border: 2px solid #000;
+}
+
+.exp-item.exp-left  .exp-dot { right: -8%; }
+.exp-item.exp-right .exp-dot { left: -8%; }
+
+/* Card */
+.exp-card {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.exp-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Logo */
+.exp-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.05);
+  padding: 4px;
+  border: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+.exp-logo-fallback {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--accent-glow-01, rgba(6,182,212,0.1));
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.exp-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.exp-position {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.2rem;
+  line-height: 1.3;
+}
+
+.exp-company {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.exp-date {
+  font-size: 0.8rem;
+  color: var(--txt-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.exp-current-badge {
+  background: var(--accent-glow-02, rgba(6,182,212,0.2));
+  color: var(--accent);
+  border: 1px solid var(--accent-glow-04, rgba(6,182,212,0.4));
+  padding: 0.1rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.exp-description {
+  font-size: 0.88rem;
+  color: var(--txt-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Mobile: single column */
+@media (max-width: 640px) {
+  .exp-timeline::before { left: 18px; }
+
+  .exp-item {
+    width: 100%;
+    padding-left: 44px;
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-item.exp-left,
+  .exp-item.exp-right { margin-left: 0; margin-right: 0; }
+
+  .exp-dot {
+    left: 11px !important;
+    right: auto !important;
+    top: 1.25rem;
+  }
+}
