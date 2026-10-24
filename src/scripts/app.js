@@ -294,12 +294,32 @@ function revealPersonalInfoFallback() {
 function setupCvButton(id, url, labelFromDb, fallbackLabel) {
   const btn = document.getElementById(id);
   if (!btn) return;
+
+  const capsule = document.getElementById('cv-capsule');
+  const innerDivider = document.getElementById('cv-inner-divider');
+
   if (url) {
     const src = url.startsWith('http') ? url : `${IMG_BASE_URL}/${url}`;
     btn.href = src;
-    const label = (labelFromDb && labelFromDb.trim()) ? labelFromDb.trim() : fallbackLabel;
-    btn.innerHTML = `${label} <i class="ri-download-line"></i>`;
-    btn.style.display = '';
+
+    // Update the label text if provided
+    const labelEl = btn.querySelector('.cv-split-label');
+    if (labelEl && labelFromDb && labelFromDb.trim()) {
+      labelEl.textContent = labelFromDb.trim();
+    }
+
+    btn.style.display = 'inline-flex';
+
+    // Show capsule container and update inner divider visibility
+    if (capsule) capsule.style.display = 'inline-flex';
+
+    // Show inner divider only if BOTH buttons exist and have URLs
+    const webBtn = document.getElementById('cv-web-btn');
+    const netBtn = document.getElementById('cv-network-btn');
+    if (innerDivider && webBtn && netBtn &&
+        webBtn.style.display !== 'none' && netBtn.style.display !== 'none') {
+      innerDivider.style.display = 'block';
+    }
   } else {
     btn.style.display = 'none';
   }

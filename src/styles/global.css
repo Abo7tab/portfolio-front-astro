@@ -1702,3 +1702,332 @@ header {
   from { opacity: 0; transform: translateY(-8px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* ═══════════════════════════════════════════
+   Facebook-Style Verified Badge (beside name)
+   ═══════════════════════════════════════════ */
+.name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.fb-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: default;
+  position: relative;
+  top: -2px;
+}
+
+.fb-verified-icon {
+  filter: drop-shadow(0 0 8px rgba(0, 132, 255, 0.7));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.fb-verified-badge:hover .fb-verified-icon {
+  transform: scale(1.18) rotate(-5deg);
+  filter: drop-shadow(0 0 14px rgba(0, 132, 255, 0.9));
+}
+
+/* Tooltip on hover */
+.fb-verified-badge::after {
+  content: "Verified Profile";
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background: rgba(10, 16, 26, 0.92);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 132, 255, 0.4);
+  color: #60b4ff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: 5px 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.fb-verified-badge:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* ═══════════════════════════════════════════
+   CV Download — Mixed A+B+C Unified Capsule
+   ═══════════════════════════════════════════ */
+.cv-download-capsule {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(10, 16, 26, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border, rgba(6, 182, 212, 0.28));
+  border-radius: 9999px;
+  padding: 6px 6px 6px 16px;
+  gap: 6px;
+  box-shadow: 0 10px 40px -8px rgba(0, 0, 0, 0.7), 0 0 25px var(--accent-glow-02, rgba(6, 182, 212, 0.18));
+  max-width: 100%;
+}
+
+.cv-capsule-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--txt-muted, #94a3b8);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cv-capsule-label i {
+  font-size: 1rem;
+  color: var(--accent, #06b6d4);
+}
+
+.cv-capsule-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+.cv-inner-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* CV Split Buttons */
+.cv-split-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 9999px;
+  text-decoration: none !important;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cv-split-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cv-split-btn:hover::before {
+  opacity: 1;
+}
+
+/* Web Dev Split Button */
+.cv-web-split {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: var(--accent, #06b6d4) !important;
+}
+
+.cv-web-split::before {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.05));
+}
+
+.cv-web-split:hover {
+  background: rgba(6, 182, 212, 0.22);
+  border-color: var(--accent, #06b6d4);
+  box-shadow: 0 6px 22px var(--accent-glow-03, rgba(6, 182, 212, 0.35));
+  transform: translateY(-2px);
+}
+
+/* Network Split Button */
+.cv-net-split {
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  color: #34d399 !important;
+}
+
+.cv-net-split::before {
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.18), rgba(52, 211, 153, 0.05));
+}
+
+.cv-net-split:hover {
+  background: rgba(52, 211, 153, 0.2);
+  border-color: #34d399;
+  box-shadow: 0 6px 22px rgba(52, 211, 153, 0.35);
+  transform: translateY(-2px);
+}
+
+.cv-split-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.cv-web-split .cv-split-icon {
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.cv-net-split .cv-split-icon {
+  background: rgba(52, 211, 153, 0.15);
+}
+
+.cv-split-icon i {
+  font-size: 1rem;
+}
+
+.cv-split-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.cv-split-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cv-split-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(6, 182, 212, 0.25);
+  color: var(--accent, #06b6d4);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.cv-split-badge--net {
+  background: rgba(52, 211, 153, 0.25);
+  color: #34d399;
+}
+
+/* Download arrow animation */
+.cv-dl-arrow {
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cv-split-btn:hover .cv-dl-arrow {
+  transform: translateY(3px);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 520px) {
+  .cv-download-capsule {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 22px;
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .cv-capsule-label {
+    justify-content: center;
+    padding: 4px 0;
+  }
+
+  .cv-capsule-divider, .cv-inner-divider {
+    width: 100%;
+    height: 1px;
+    margin: 0;
+  }
+
+  .cv-split-btn {
+    justify-content: center;
+    border-radius: 14px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   Certificate Cards: Holographic Shine &
+   Verified Badge (Automatic via CSS)
+   ═══════════════════════════════════════════ */
+
+/* Holographic sheen layer */
+.certificate-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.certificate-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    125deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.04) 45%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.04) 55%,
+    transparent 65%
+  );
+  background-size: 250% 250%;
+  background-position: 200% 200%;
+  pointer-events: none;
+  transition: background-position 0.6s ease, opacity 0.4s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.certificate-card:hover::after {
+  opacity: 1;
+  background-position: -60% -60%;
+}
+
+/* Verified Credential Badge — auto on every cert card */
+.certificate-card::before {
+  content: '✦ Verified Credential';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(0, 132, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 132, 255, 0.45);
+  border-radius: 30px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #60b4ff;
+  text-transform: uppercase;
+  box-shadow: 0 2px 12px rgba(0, 132, 255, 0.25);
+  pointer-events: none;
+}
+
+/* Don't show the badge over the image area — only the top of the card glass part */
+.certificate-card .position-relative::after {
+  display: none;
+}

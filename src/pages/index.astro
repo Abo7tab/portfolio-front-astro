@@ -48,7 +48,15 @@ import Modals from '../components/Modals.astro';
             <div class="skeleton skeleton-text-sm" style="width:180px;height:16px;margin:0 auto 12px;"></div>
           </div>
           <!-- Real: Name + Title -->
-          <h1 class="name reveal-left" id="profile-name" style="transition-delay:100ms; display:none;">Mohamed Emad Ali</h1>
+          <h1 class="name reveal-left" id="profile-name" style="transition-delay:100ms; display:none;">
+            Mohamed Emad Ali
+            <span class="fb-verified-badge" title="Verified Profile">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="fb-verified-icon">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5213 2.62368C11.3147 1.75251 12.6853 1.75251 13.4787 2.62368L14.4989 3.74391C14.8973 4.18137 15.4746 4.4202 16.0645 4.39121L17.5724 4.31711C18.7441 4.25953 19.7405 5.25588 19.6829 6.42761L19.6088 7.93551C19.5798 8.52538 19.8186 9.10266 20.2561 9.50113L21.3763 10.5213C22.2475 11.3147 22.2475 12.6853 21.3763 13.4787L20.2561 14.4989C19.8186 14.8973 19.5798 15.4746 19.6088 16.0645L19.6829 17.5724C19.7405 18.7441 18.7441 19.7405 17.5724 19.6829L16.0645 19.6088C15.4746 19.5798 14.8973 19.8186 14.4989 20.2561L13.4787 21.3763C12.6853 22.2475 11.3147 22.2475 10.5213 21.3763L9.50113 20.2561C9.10266 19.8186 8.52538 19.5798 7.93551 19.6088L6.42761 19.6829C5.25588 19.7405 4.25953 18.7441 4.31711 17.5724L4.39121 16.0645C4.4202 15.4746 4.18137 14.8973 3.74391 14.4989L2.62368 13.4787C1.75251 12.6853 1.75251 11.3147 2.62368 10.5213L3.74391 9.50113C4.18137 9.10266 4.4202 8.52538 4.39121 7.93551L4.31711 6.42761C4.25953 5.25588 5.25588 4.25953 6.42761 4.31711L7.93551 4.39121C8.52538 4.4202 9.10266 4.18137 9.50113 3.74391L10.5213 2.62368Z" fill="#0084FF"/>
+                <path d="M9.75 12.25L11.25 13.75L15.25 9.75" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </h1>
           <h2 class="profession reveal-right" id="profile-profession" style="transition-delay:200ms; display:none;">DevOps & Network Engineer</h2>
           <p class="profile-bio reveal-up" id="profile-bio" style="display:none; transition-delay:300ms;"></p>
 
@@ -98,14 +106,36 @@ import Modals from '../components/Modals.astro';
           <div class="skeleton skeleton-btn"></div>
           <div class="skeleton skeleton-btn"></div>
         </div>
-        <!-- Real: CV Buttons -->
+        <!-- Real: CV Buttons — Mixed A+B+C Design -->
         <div class="profile-btns reveal-scale" id="real-btns" style="transition-delay:600ms; display:none;">
-          <a href="#" class="btn" id="cv-web-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
-            Web Dev CV <i class="ri-download-line"></i>
-          </a>
-          <a href="#" class="btn" id="cv-network-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
-            Network CV <i class="ri-download-line"></i>
-          </a>
+          <!-- Unified Glass Capsule Container -->
+          <div class="cv-download-capsule" id="cv-capsule" style="display:none;">
+            <span class="cv-capsule-label">
+              <i class="ri-file-user-line"></i> Download CV
+            </span>
+            <div class="cv-capsule-divider"></div>
+            <a href="#" class="cv-split-btn cv-web-split" id="cv-web-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
+              <span class="cv-split-icon">
+                <i class="ri-code-s-slash-line"></i>
+              </span>
+              <span class="cv-split-text">
+                <span class="cv-split-label">Web Dev</span>
+                <span class="cv-split-badge">PDF</span>
+              </span>
+              <i class="ri-download-line cv-dl-arrow"></i>
+            </a>
+            <div class="cv-inner-divider" id="cv-inner-divider" style="display:none;"></div>
+            <a href="#" class="cv-split-btn cv-net-split" id="cv-network-btn" target="_blank" rel="noopener noreferrer" download="" style="display:none;">
+              <span class="cv-split-icon">
+                <i class="ri-shield-keyhole-line"></i>
+              </span>
+              <span class="cv-split-text">
+                <span class="cv-split-label">Network</span>
+                <span class="cv-split-badge cv-split-badge--net">PDF</span>
+              </span>
+              <i class="ri-download-line cv-dl-arrow"></i>
+            </a>
+          </div>
         </div>
 
       </div>
