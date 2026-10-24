@@ -135,9 +135,29 @@ header {
 
 .profile-data {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: left;
+  width: 100%;
+  max-width: 780px;
+}
+
+/* Avatar column — fixed size */
+.profile-avatar-col {
+  flex-shrink: 0;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+}
+
+/* Info column — grows to fill */
+.profile-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
 }
 
 .imgBx {
@@ -149,7 +169,7 @@ header {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-glow);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
 }
 
 .imgBx img {
@@ -181,7 +201,7 @@ header {
   text-shadow: 0 0 25px var(--accent-glow);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   flex-wrap: nowrap;
 }
@@ -208,15 +228,17 @@ header {
   line-height: 1.7;
   max-width: 320px;
   margin: 0 auto 1.5rem;
-  text-align: center;
+  text-align: left;
   font-style: italic;
+  margin: 0;
 }
 
 /* Social icons - Cyan Neon Theme */
 .socials {
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .socials .link {
@@ -703,6 +725,26 @@ header {
 
 /* Responsive */
 @media (max-width: 600px) {
+  .profile-data {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .profile-info-col {
+    align-items: center;
+  }
+  .name {
+    justify-content: center;
+  }
+  .socials {
+    justify-content: center;
+  }
+  .profile-bio {
+    text-align: center;
+    margin: 0 auto;
+  }
+
   .profile-info {
     padding: 1.5rem 1rem;
     gap: 0;
