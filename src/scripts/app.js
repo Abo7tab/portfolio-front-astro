@@ -583,29 +583,36 @@ async function loadCertificates() {
         : '';
       const catName = cert.category ? cert.category.name : '';
 
-      // Verified badge SVG (Facebook-style blue checkmark)
-      const verifiedBadge = `<span class="cert-verified-badge" title="Verified Credential">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5213 2.62368C11.3147 1.75251 12.6853 1.75251 13.4787 2.62368L14.4989 3.74391C14.8973 4.18137 15.4746 4.4202 16.0645 4.39121L17.5724 4.31711C18.7441 4.25953 19.7405 5.25588 19.6829 6.42761L19.6088 7.93551C19.5798 8.52538 19.8186 9.10266 20.2561 9.50113L21.3763 10.5213C22.2475 11.3147 22.2475 12.6853 21.3763 13.4787L20.2561 14.4989C19.8186 14.8973 19.5798 15.4746 19.6088 16.0645L19.6829 17.5724C19.7405 18.7441 18.7441 19.7405 17.5724 19.6829L16.0645 19.6088C15.4746 19.5798 14.8973 19.8186 14.4989 20.2561L13.4787 21.3763C12.6853 22.2475 11.3147 22.2475 10.5213 21.3763L9.50113 20.2561C9.10266 19.8186 8.52538 19.5798 7.93551 19.6088L6.42761 19.6829C5.25588 19.7405 4.25953 18.7441 4.31711 17.5724L4.39121 16.0645C4.4202 15.4746 4.18137 14.8973 3.74391 14.4989L2.62368 13.4787C1.75251 12.6853 1.75251 11.3147 2.62368 10.5213L3.74391 9.50113C4.18137 9.10266 4.4202 8.52538 4.39121 7.93551L4.31711 6.42761C4.25953 5.25588 5.25588 4.25953 6.42761 4.31711L7.93551 4.39121C8.52538 4.4202 9.10266 4.18137 9.50113 3.74391L10.5213 2.62368Z" fill="#0084FF"/>
-          <path d="M9.75 12.25L11.25 13.75L15.25 9.75" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Verified
-      </span>`;
+      // Overlays on image: Verified pill (bottom-left) + Category pill (bottom-right)
+      const imgOverlays = `
+        <span class="cert-verified-pill" title="Verified Credential">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5213 2.62368C11.3147 1.75251 12.6853 1.75251 13.4787 2.62368L14.4989 3.74391C14.8973 4.18137 15.4746 4.4202 16.0645 4.39121L17.5724 4.31711C18.7441 4.25953 19.7405 5.25588 19.6829 6.42761L19.6088 7.93551C19.5798 8.52538 19.8186 9.10266 20.2561 9.50113L21.3763 10.5213C22.2475 11.3147 22.2475 12.6853 21.3763 13.4787L20.2561 14.4989C19.8186 14.8973 19.5798 15.4746 19.6088 16.0645L19.6829 17.5724C19.7405 18.7441 18.7441 19.7405 17.5724 19.6829L16.0645 19.6088C15.4746 19.5798 14.8973 19.8186 14.4989 20.2561L13.4787 21.3763C12.6853 22.2475 11.3147 22.2475 10.5213 21.3763L9.50113 20.2561C9.10266 19.8186 8.52538 19.5798 7.93551 19.6088L6.42761 19.6829C5.25588 19.7405 4.25953 18.7441 4.31711 17.5724L4.39121 16.0645C4.4202 15.4746 4.18137 14.8973 3.74391 14.4989L2.62368 13.4787C1.75251 12.6853 1.75251 11.3147 2.62368 10.5213L3.74391 9.50113C4.18137 9.10266 4.4202 8.52538 4.39121 7.93551L4.31711 6.42761C4.25953 5.25588 5.25588 4.25953 6.42761 4.31711L7.93551 4.39121C8.52538 4.4202 9.10266 4.18137 9.50113 3.74391L10.5213 2.62368Z" fill="#0084FF"/>
+            <path d="M9.75 12.25L11.25 13.75L15.25 9.75" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Verified
+        </span>
+        ${catName ? `<span class="cert-cat-pill" style="background:${v.accent}ee;">${catName}</span>` : ''}
+      `;
 
       return `
         <div class="col-md-6 col-lg-4 certificate-item">
           <div class="card certificate-card h-100 border-0 ${v.cls} reveal-right" style="--cert-accent:${v.accent};">
             ${imgSrc ? `
-              <div class="position-relative overflow-hidden" style="border-radius:20px 20px 0 0;">
-                <img src="${imgSrc}" loading="lazy" decoding="async" width="400" height="200" class="card-img-top certificate-img" alt="${cert.title}"
-                     style="height:200px;aspect-ratio:16/9;background:var(--glass-bg);object-fit:cover;cursor:pointer;"
-                     data-bs-toggle="modal" data-bs-target="#certificateModal" data-img="${imgSrc}" data-pdf="${fileSrc}">
+              <div class="cert-img-wrap">
+                <img src="${imgSrc}" loading="lazy" decoding="async" width="400" height="200"
+                     class="card-img-top certificate-img" alt="${cert.title}"
+                     style="height:200px;aspect-ratio:16/9;object-fit:cover;cursor:pointer;display:block;width:100%;"
+                     data-bs-toggle="modal" data-bs-target="#certificateModal"
+                     data-img="${imgSrc}" data-pdf="${fileSrc}">
+                <div class="cert-img-overlays">${imgOverlays}</div>
               </div>
-            ` : ''}
+            ` : `
+              <div class="cert-img-overlays cert-img-overlays--noimg">${imgOverlays}</div>
+            `}
             <div class="card-body d-flex flex-column text-center p-4">
-              <h3 class="card-title h5 fw-bold mb-1" style="color:#fff;">${cert.title}</h3>
-              <div class="cert-verified-row">${verifiedBadge}${catName ? `<span class="cert-category-tag" style="background:${v.accent}22;color:${v.accent};border:1px solid ${v.accent}44;">${catName}</span>` : ''}</div>
-              ${cert.issuer ? `<p class="small mb-1 mt-2" style="color:var(--txt-muted);"><i class="ri-building-line me-1" style="color:${v.accent};"></i>${cert.issuer}</p>` : ''}
+              <h3 class="card-title h5 fw-bold mb-3" style="color:#fff;">${cert.title}</h3>
+              ${cert.issuer ? `<p class="small mb-1" style="color:var(--txt-muted);"><i class="ri-building-line me-1" style="color:${v.accent};"></i>${cert.issuer}</p>` : ''}
               ${cert.date_acquired ? `<p class="small mb-3" style="color:var(--txt-muted);"><i class="ri-calendar-line me-1" style="color:${v.accent};"></i>${cert.date_acquired}</p>` : ''}
               <div class="mt-auto">
                 ${fileSrc ? `<a href="${fileSrc}" class="cert-view-btn" style="background:${v.accent};box-shadow:0 8px 25px ${v.accent}55;color:#000;" target="_blank" rel="noopener"><i class="ri-file-text-line"></i> View Certificate</a>` : ''}
@@ -615,7 +622,7 @@ async function loadCertificates() {
         </div>`;
     }
 
-    // Bind cert modal click handler (reusable)
+        // Bind cert modal click handler (reusable)
     function bindCertModals() {
       document.querySelectorAll('[data-bs-target="#certificateModal"]').forEach(el => {
         if (el.dataset._bound) return; // skip already bound

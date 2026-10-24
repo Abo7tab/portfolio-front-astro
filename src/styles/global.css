@@ -179,6 +179,11 @@ header {
   margin-bottom: .25rem;
   color: #fff;
   text-shadow: 0 0 25px var(--accent-glow);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .profession {
@@ -2003,41 +2008,69 @@ header {
   background-position: -60% -60%;
 }
 
-/* Inline verified badge & category tag styles */
-.cert-verified-row {
+.certificate-card .position-relative::after {
+  display: none;
+}
+
+/* =======================================
+   Certificate Card Image Overlays
+   ======================================= */
+.cert-img-wrap {
+  position: relative;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+.cert-img-overlays {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 6px 0 10px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+  pointer-events: none;
+  z-index: 4;
 }
 
-.cert-verified-badge {
+.cert-img-overlays--noimg {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  padding: 10px 14px 0;
+}
+
+.cert-verified-pill {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  color: #60b4ff;
-  font-size: 0.72rem;
+  gap: 5px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 132, 255, 0.5);
+  border-radius: 30px;
+  font-size: 0.68rem;
   font-weight: 700;
+  color: #60b4ff;
   letter-spacing: 0.3px;
+  pointer-events: none;
 }
 
-.cert-verified-badge svg {
-  filter: drop-shadow(0 0 5px rgba(0, 132, 255, 0.6));
+.cert-verified-pill svg {
+  filter: drop-shadow(0 0 4px rgba(0,132,255,0.7));
   flex-shrink: 0;
 }
 
-.cert-category-tag {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 20px;
+.cert-cat-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 30px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #000;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-/* Don't show holographic sheen on the image container */
-.certificate-card .position-relative::after {
-  display: none;
+  pointer-events: none;
 }
