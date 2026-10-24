@@ -159,6 +159,7 @@ async function loadPage(page) {
             case 'projects': await renderProjects(content); break;
             case 'skills': await renderSkills(content); break;
             case 'certificates': await renderCertificates(content); break;
+            case 'experience': await renderExperience(content); break;
             case 'profile': await renderProfile(content); break;
         }
     } catch (error) {
@@ -1298,4 +1299,211 @@ window.deleteSocial = async (id) => {
         loadPage('profile');
         Swal.fire('Deleted!', '', 'success');
     } catch (e) { Swal.fire('Error', e.message, 'error'); } finally { hideSaveOverlay(); }
+};
+
+// =============================================
+// --- Work Experience ---
+// =============================================
+async function renderExperience(container) {
+    const response = await API.request('/work-experiences', 'GET', null, true);
+    const items = response.data || [];
+
+    container.innerHTML = '';
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'd-flex justify-content-between align-items-center mb-4';
+    const h2 = document.createElement('h2');
+    h2.className = 'mb-0';
+    h2.textContent = 'Work Experience';
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn btn-primary';
+    addBtn.innerHTML = '+ Add Experience';
+    addBtn.onclick = () => showExperienceModal();
+    header.appendChild(h2);
+    header.appendChild(addBtn);
+    container.appendChild(header);
+
+    if (items.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'alert alert-info';
+        empty.textContent = 'No work experience added yet. Add your first job!';
+        container.appendChild(empty);
+        return;
+    }
+
+    const row = document.createElement('div');
+    row.className = 'row g-3';
+
+    items.forEach(exp => {
+        const logoSrc = exp.logo_url || null;
+        const dateRange = exp.is_current
+            ? `${exp.start_date} — Present 🟢`
+            : `${exp.start_date} — ${exp.end_date || ''}`;
+
+        const col = document.createElement('div');
+        col.className = 'col-md-6';
+
+        col.innerHTML = `
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        ${logoSrc
+                            ? `<img src="${logoSrc}" alt="${exp.company_name}" style="width:56px;height:56px;object-fit:contain;border-radius:10px;border:1px solid #dee2e6;padding:4px;">`
+                            : `<div style="width:56px;height:56px;border-radius:10px;background:#f8f9fa;border:1px solid #dee2e6;display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🏢</div>`
+                        }
+                        <div>
+                            <h5 class="mb-0 fw-bold">${exp.position}</h5>
+                            <span class="text-muted">${exp.company_name}</span>
+                        </div>
+                    </div>
+                    <p class="small text-muted mb-2"><i class="ri-calendar-line me-1"></i>${dateRange}</p>
+                    ${exp.description ? `<p class="small mb-3">${exp.description.length > 120 ? exp.description.substring(0, 120) + '...' : exp.description}</p>` : ''}
+                    <div class="d-flex gap-2 mt-auto">
+                        <button class="btn btn-sm btn-outline-primary flex-fill" onclick="showExperienceModal(${JSON.stringify(exp).replace(/"/g, '&quot;')})">✏️ Edit</button>
+                        <button class="btn btn-sm btn-outline-danger flex-fill" onclick="deleteExperience(${exp.id})">🗑️ Delete</button>
+                    </div>
+                </div>
+            </div>`;
+
+        row.appendChild(col);
+    });
+
+    container.appendChild(row);
+}
+
+window.showExperienceModal = async (exp = null) => {
+    const isEdit = exp !== null;
+    const currentLogo = (isEdit && exp.logo_url)
+        ? `<img src="${exp.logo_url}" class="img-thumbnail mt-1" style="height:60px;object-fit:contain;">`
+        : '';
+
+    Swal.fire({
+        title: isEdit ? 'Edit Work Experience' : 'Add Work Experience',
+        width: '640px',
+        html: `
+            <div style="text-align:left">
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Company Name *</label>
+                    <input id="swal-exp-company" class="form-control" placeholder="e.g. Google, Freelance" value="${isEdit ? (exp.company_name || '') : ''}">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Position / Job Title *</label>
+                    <input id="swal-exp-position" class="form-control" placeholder="e.g. DevOps Engineer" value="${isEdit ? (exp.position || '') : ''}">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Description</label>
+                    <textarea id="swal-exp-desc" class="form-control" rows="3" placeholder="Brief description of responsibilities...">${isEdit ? (exp.description || '') : ''}</textarea>
+                </div>
+                <div class="row g-2 mb-2">
+                    <div class="col-6">
+                        <label class="form-label fw-bold">Start Date *</label>
+                        <input id="swal-exp-start" class="form-control" placeholder="e.g. Jan 2023" value="${isEdit ? (exp.start_date || '') : ''}">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label fw-bold">End Date</label>
+                        <input id="swal-exp-end" class="form-control" placeholder="e.g. Dec 2024" value="${isEdit ? (exp.end_date || '') : ''}" ${(isEdit && exp.is_current) ? 'disabled' : ''}>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="swal-exp-current" ${(isEdit && exp.is_current) ? 'checked' : ''}>
+                        <label class="form-check-label fw-bold" for="swal-exp-current">Currently working here 🟢</label>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Company Logo ${isEdit ? '<small class="text-muted">— leave empty to keep current</small>' : '(optional)'}</label>
+                    ${currentLogo}
+                    <input type="file" id="swal-exp-logo" class="form-control mt-1" accept="image/*">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label fw-bold">Sort Order <small class="text-muted">(lower = first)</small></label>
+                    <input type="number" id="swal-exp-order" class="form-control" min="0" value="${isEdit ? (exp.sort_order ?? 0) : 0}">
+                </div>
+            </div>
+        `,
+        didOpen: () => {
+            // Toggle end date when "currently working" checkbox changes
+            const currentChk = document.getElementById('swal-exp-current');
+            const endInput = document.getElementById('swal-exp-end');
+            currentChk.addEventListener('change', () => {
+                endInput.disabled = currentChk.checked;
+                if (currentChk.checked) endInput.value = '';
+            });
+        },
+        showCancelButton: true,
+        confirmButtonText: isEdit ? 'Save Changes' : 'Add Experience',
+        confirmButtonColor: '#0d6efd',
+        focusConfirm: false,
+        preConfirm: () => {
+            const company = document.getElementById('swal-exp-company').value.trim();
+            const position = document.getElementById('swal-exp-position').value.trim();
+            const start = document.getElementById('swal-exp-start').value.trim();
+            if (!company) { Swal.showValidationMessage('Company name is required!'); return false; }
+            if (!position) { Swal.showValidationMessage('Position is required!'); return false; }
+            if (!start) { Swal.showValidationMessage('Start date is required!'); return false; }
+            return {
+                company_name: company,
+                position,
+                description: document.getElementById('swal-exp-desc').value.trim(),
+                start_date: start,
+                end_date: document.getElementById('swal-exp-end').value.trim(),
+                is_current: document.getElementById('swal-exp-current').checked ? '1' : '0',
+                sort_order: document.getElementById('swal-exp-order').value || 0,
+                logo: document.getElementById('swal-exp-logo').files[0]
+            };
+        }
+    }).then(async (result) => {
+        if (!result.isConfirmed) return;
+        const v = result.value;
+
+        const formData = new FormData();
+        formData.append('company_name', v.company_name);
+        formData.append('position', v.position);
+        if (v.description) formData.append('description', v.description);
+        formData.append('start_date', v.start_date);
+        if (v.end_date) formData.append('end_date', v.end_date);
+        formData.append('is_current', v.is_current);
+        formData.append('sort_order', v.sort_order);
+        if (v.logo) formData.append('logo', v.logo);
+
+        showSaveOverlay(isEdit ? 'Updating experience...' : 'Adding experience...');
+        try {
+            if (isEdit) {
+                formData.append('_method', 'PUT');
+                await API.request('/work-experiences/' + exp.id, 'POST', formData, true);
+                Swal.fire('Updated!', 'Work experience updated successfully.', 'success');
+            } else {
+                await API.request('/work-experiences', 'POST', formData, true);
+                Swal.fire('Added!', 'Work experience added successfully.', 'success');
+            }
+            loadPage('experience');
+        } catch (e) {
+            Swal.fire('Error', e.message, 'error');
+        } finally {
+            hideSaveOverlay();
+        }
+    });
+};
+
+window.deleteExperience = async (id) => {
+    const result = await Swal.fire({
+        title: 'Delete Work Experience?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        confirmButtonText: 'Yes, Delete'
+    });
+    if (!result.isConfirmed) return;
+    showSaveOverlay('Deleting...');
+    try {
+        await API.request('/work-experiences/' + id, 'DELETE', null, true);
+        loadPage('experience');
+        Swal.fire('Deleted!', '', 'success');
+    } catch (e) {
+        Swal.fire('Error', e.message, 'error');
+    } finally {
+        hideSaveOverlay();
+    }
 };
