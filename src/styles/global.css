@@ -117,7 +117,13 @@ footer {
 
 /* ---- Header / Profile ---- */
 header {
-  padding: 4.5rem 0 3rem;
+  padding: 8.5rem 0 3rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 3.5rem 0 2rem;
+  }
 }
 
 .profile {
