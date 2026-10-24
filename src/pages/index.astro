@@ -385,18 +385,157 @@ import Modals from '../components/Modals.astro';
 
   </div>
 
-  <!-- ══════ FILTER TABS LOGIC (inline, no API) ══════ -->
+  <!-- ══════ FLOATING GLASS DOCK (Top on Desktop, Bottom on Mobile) ══════ -->
+  <div id="floating-dock" class="floating-dock" aria-label="Quick navigation">
+    <div class="floating-dock-glass">
+      <!-- Main Tabs -->
+      <div class="floating-dock-tabs">
+        <button class="floating-tab-btn active" data-target="#certificates" title="Certificates">
+          <i class="ri-award-line"></i>
+          <span class="dock-text">Certificates</span>
+        </button>
+        <button class="floating-tab-btn" data-target="#projects" title="Projects">
+          <i class="ri-code-box-line"></i>
+          <span class="dock-text">Projects</span>
+        </button>
+        <button class="floating-tab-btn" data-target="#skills" title="Skills">
+          <i class="ri-flashlight-line"></i>
+          <span class="dock-text">Skills</span>
+        </button>
+        <button class="floating-tab-btn" data-target="#experience" title="Experience">
+          <i class="ri-briefcase-line"></i>
+          <span class="dock-text">Experience</span>
+        </button>
+      </div>
+
+      <!-- Certificate Sub-tabs (Programming / Networking) -->
+      <div class="floating-sub-pills" id="floating-sub-pills">
+        <div class="floating-divider"></div>
+        <button class="floating-sub-btn active" id="dock-web-btn" title="Programming & Development">
+          <i class="ri-code-s-slash-line"></i>
+          <span class="sub-text">Web</span>
+        </button>
+        <button class="floating-sub-btn" id="dock-net-btn" title="Networking & Cyber Security">
+          <i class="ri-shield-keyhole-line"></i>
+          <span class="sub-text">Network</span>
+        </button>
+      </div>
+
+      <!-- Scroll To Top Button -->
+      <button class="floating-scroll-top" id="dock-scroll-top" title="Back to top">
+        <i class="ri-arrow-up-s-line"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════ NAVIGATION & TABS LOGIC ══════ -->
   <script is:inline>
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        ['#certificates', '#projects', '#skills', '#experience'].forEach(s => {
-          document.querySelector(s).style.display = 'none';
+    (function() {
+      const originalTabs = document.querySelector('.filter-tabs');
+      const floatingDock = document.getElementById('floating-dock');
+      const subPills = document.getElementById('floating-sub-pills');
+      const dockWebBtn = document.getElementById('dock-web-btn');
+      const dockNetBtn = document.getElementById('dock-net-btn');
+      const originalWebTab = document.getElementById('web-tab');
+      const originalNetTab = document.getElementById('net-tab');
+      const dockScrollTop = document.getElementById('dock-scroll-top');
+
+      function switchSection(targetId, shouldScroll) {
+        // Update original buttons
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.target === targetId);
         });
-        document.querySelector(btn.dataset.target).style.display = 'block';
+
+        // Update dock buttons
+        document.querySelectorAll('.floating-tab-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.target === targetId);
+        });
+
+        // Hide all sections, show active
+        ['#certificates', '#projects', '#skills', '#experience'].forEach(s => {
+          const el = document.querySelector(s);
+          if (el) el.style.display = (s === targetId) ? 'block' : 'none';
+        });
+
+        // Toggle certs sub-pills in dock
+        if (subPills) {
+          subPills.style.display = (targetId === '#certificates') ? 'flex' : 'none';
+        }
+
+        // Smooth scroll to top of section if triggered from dock
+        if (shouldScroll) {
+          const sectionEl = document.querySelector(targetId);
+          if (sectionEl) {
+            const offset = window.innerWidth > 768 ? 90 : 30;
+            const top = sectionEl.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+          }
+        }
+      }
+
+      // Main filter buttons click
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchSection(btn.dataset.target, false));
       });
-    });
+
+      // Floating dock buttons click
+      document.querySelectorAll('.floating-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchSection(btn.dataset.target, true));
+      });
+
+      // Floating dock certificate sub-tabs
+      function syncCertSub(type) {
+        if (dockWebBtn) dockWebBtn.classList.toggle('active', type === 'web');
+        if (dockNetBtn) dockNetBtn.classList.toggle('active', type === 'net');
+      }
+
+      if (dockWebBtn && originalWebTab) {
+        dockWebBtn.addEventListener('click', () => {
+          originalWebTab.click();
+          syncCertSub('web');
+        });
+      }
+      if (dockNetBtn && originalNetTab) {
+        dockNetBtn.addEventListener('click', () => {
+          originalNetTab.click();
+          syncCertSub('net');
+        });
+      }
+      if (originalWebTab) {
+        originalWebTab.addEventListener('click', () => syncCertSub('web'));
+      }
+      if (originalNetTab) {
+        originalNetTab.addEventListener('click', () => syncCertSub('net'));
+      }
+
+      // Scroll to top button
+      if (dockScrollTop) {
+        dockScrollTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Scroll observer to show/hide dock smoothly
+      let ticking = false;
+      function checkDockVisibility() {
+        if (!originalTabs || !floatingDock) return;
+        const rect = originalTabs.getBoundingClientRect();
+        // If original tabs scrolled out of view
+        if (rect.bottom < 50) {
+          floatingDock.classList.add('is-visible');
+        } else {
+          floatingDock.classList.remove('is-visible');
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          requestAnimationFrame(checkDockVisibility);
+          ticking = true;
+        }
+      }, { passive: true });
+    })();
   </script>
 
   <!-- Main App Logic -->
