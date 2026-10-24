@@ -196,7 +196,21 @@ async function loadPersonalInfo() {
     // Name
     const nameEl = document.getElementById('profile-name');
     if (nameEl) {
-      nameEl.textContent = info.full_name || info.name || 'Mohamed Emad Ali';
+      // Use a text node to preserve the verified badge SVG inside the h1
+      const nameText = info.full_name || info.name || 'Mohamed Emad Ali';
+      // Find or create the text node (first child should be text)
+      let textNode = null;
+      for (let i = 0; i < nameEl.childNodes.length; i++) {
+        if (nameEl.childNodes[i].nodeType === Node.TEXT_NODE) {
+          textNode = nameEl.childNodes[i];
+          break;
+        }
+      }
+      if (textNode) {
+        textNode.textContent = nameText + ' ';
+      } else {
+        nameEl.insertBefore(document.createTextNode(nameText + ' '), nameEl.firstChild);
+      }
     }
 
     // Job Title

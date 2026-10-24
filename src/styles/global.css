@@ -2023,15 +2023,14 @@ header {
 
 .cert-img-overlays {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
+  top: 10px;
   right: 10px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 6px;
   pointer-events: none;
   z-index: 4;
+  flex-direction: row-reverse;
 }
 
 .cert-img-overlays--noimg {
