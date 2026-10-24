@@ -340,8 +340,8 @@ import Modals from '../components/Modals.astro';
 
         <!-- ══════ EXPERIENCE SECTION ══════ -->
         <section id="experience" style="display:none;">
-          <div class="exp-timeline">
-            <!-- Skeleton: 2 experience cards -->
+          <div class="exp-timeline" id="experience-container">
+            <!-- Skeleton: 2 experience cards (replaced when loaded) -->
             <div class="exp-item exp-left">
               <div class="exp-card glass-effect">
                 <div class="exp-header">
@@ -372,8 +372,6 @@ import Modals from '../components/Modals.astro';
               <div class="exp-dot"></div>
             </div>
           </div>
-          <!-- Real: filled by JS -->
-          <div class="exp-timeline" id="experience-container"></div>
         </section>
 
       </div>
