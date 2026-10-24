@@ -606,7 +606,7 @@ async function loadCertificates() {
           </svg>
           Verified
         </span>
-        ${catName ? `<span class="cert-cat-pill" style="background:${v.accent}ee;">${catName}</span>` : ''}
+
       `;
 
       return `
