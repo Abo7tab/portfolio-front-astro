@@ -179,7 +179,11 @@ header {
   margin-bottom: .25rem;
   color: #fff;
   text-shadow: 0 0 25px var(--accent-glow);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .profession {
@@ -723,6 +727,7 @@ header {
 
   .name {
     font-size: 1.9rem;
+    gap: 6px;
   }
 
   .filter-tabs {
