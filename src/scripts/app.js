@@ -306,10 +306,20 @@ function setupCvButton(id, url, labelFromDb, fallbackLabel) {
 }
 
 function injectWhatsAppFloat(phone) {
+  const cleanPhone = phone.replace(/[^0-9]/g, '');
+  const waUrl = `https://wa.me/${cleanPhone}`;
+
+  // Bind to dynamic island dock whatsapp button if present
+  const dockWa = document.getElementById('dock-whatsapp-btn');
+  if (dockWa) {
+    dockWa.href = waUrl;
+    dockWa.style.display = 'inline-flex';
+  }
+
   if (document.getElementById('whatsapp-float')) return;
   const btn = document.createElement('a');
   btn.id = 'whatsapp-float';
-  btn.href = `https://wa.me/${phone.replace(/[^0-9]/g, '')}`;
+  btn.href = waUrl;
   btn.target = '_blank';
   btn.rel = 'noopener';
   btn.title = 'WhatsApp';
@@ -318,7 +328,7 @@ function injectWhatsAppFloat(phone) {
     width:56px;height:56px;border-radius:50%;
     background:#25D366;display:flex;align-items:center;
     justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.4);
-    transition:transform 0.2s;
+    transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   `;
   btn.innerHTML = '<i class="ri-whatsapp-line" style="font-size:28px;color:#fff;"></i>';
   btn.onmouseenter = () => (btn.style.transform = 'scale(1.1)');

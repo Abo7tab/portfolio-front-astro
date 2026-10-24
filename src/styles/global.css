@@ -1372,7 +1372,7 @@ header {
 
 
 /* ═══════════════════════════════════════════
-   Floating Glass Navigation Dock
+   Floating Glass Dynamic Island Dock
    (Top on Desktop, Bottom on Mobile)
    ═══════════════════════════════════════════ */
 .floating-dock {
@@ -1380,41 +1380,41 @@ header {
   z-index: 1000;
   pointer-events: none;
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
 
-/* Translucent Glass Pill - Preserves 3D Waves */
+/* Translucent Glass Capsule - Preserves 3D Waves */
 .floating-dock-glass {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 10px;
-  background: rgba(10, 16, 26, 0.52);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid var(--glass-border, rgba(6, 182, 212, 0.25));
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(10, 16, 26, 0.58);
+  backdrop-filter: blur(22px) saturate(190%);
+  -webkit-backdrop-filter: blur(22px) saturate(190%);
+  border: 1px solid var(--glass-border, rgba(6, 182, 212, 0.28));
   border-radius: 9999px;
-  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-glow-012, rgba(6, 182, 212, 0.15));
+  box-shadow: 0 16px 45px -8px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow-02, rgba(6, 182, 212, 0.2));
 }
 
 /* Tabs list */
 .floating-dock-tabs {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
 }
 
-/* Main Tab Button */
+/* Main Tab Button - More spacious & prominent */
 .floating-tab-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   background: transparent;
   border: none;
   color: var(--txt-muted, #cbd5e1);
-  padding: 8px 14px;
+  padding: 9px 16px;
   border-radius: 9999px;
-  font-size: 0.86rem;
+  font-size: 0.92rem;
   font-weight: 600;
   font-family: inherit;
   cursor: pointer;
@@ -1423,7 +1423,7 @@ header {
 }
 
 .floating-tab-btn i {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .floating-tab-btn:hover:not(.active) {
@@ -1435,20 +1435,20 @@ header {
   background: var(--accent, #06b6d4);
   color: #000 !important;
   font-weight: 700;
-  box-shadow: 0 4px 18px var(--accent-glow, rgba(6, 182, 212, 0.5));
+  box-shadow: 0 4px 20px var(--accent-glow, rgba(6, 182, 212, 0.5));
 }
 
 /* Sub-pills for Certificates (Web vs Network) */
 .floating-sub-pills {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   animation: fadeInDock 0.3s ease;
 }
 
 .floating-divider {
   width: 1px;
-  height: 20px;
+  height: 24px;
   background: rgba(255, 255, 255, 0.18);
   margin: 0 4px;
 }
@@ -1456,13 +1456,13 @@ header {
 .floating-sub-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--txt-muted, #cbd5e1);
-  padding: 6px 11px;
+  padding: 7px 13px;
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -1470,15 +1470,59 @@ header {
 }
 
 .floating-sub-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
 }
 
 .floating-sub-btn.active {
-  background: rgba(6, 182, 212, 0.18);
+  background: rgba(6, 182, 212, 0.2);
   border-color: var(--accent, #06b6d4);
   color: var(--accent, #06b6d4);
-  box-shadow: 0 0 10px var(--accent-glow-02, rgba(6, 182, 212, 0.2));
+  box-shadow: 0 0 12px var(--accent-glow-02, rgba(6, 182, 212, 0.25));
+}
+
+/* Actions group: WhatsApp + Scroll Top */
+.floating-dock-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 2px;
+}
+
+/* Integrated WhatsApp Button in Dock */
+.floating-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #25D366;
+  padding: 8px 14px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.floating-wa-btn i {
+  font-size: 1.18rem;
+  color: #25D366;
+  transition: color 0.2s;
+}
+
+.floating-wa-btn:hover {
+  background: #25D366;
+  color: #fff !important;
+  border-color: #25D366;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.55);
+}
+
+.floating-wa-btn:hover i {
+  color: #fff;
 }
 
 /* Scroll To Top button */
@@ -1486,28 +1530,33 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--txt-muted, #cbd5e1);
   cursor: pointer;
   transition: all 0.25s ease;
-  margin-left: 2px;
+  font-size: 1.15rem;
 }
 
 .floating-scroll-top:hover {
   background: var(--accent, #06b6d4);
   color: #000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--accent-glow, rgba(6, 182, 212, 0.4));
+  box-shadow: 0 4px 15px var(--accent-glow, rgba(6, 182, 212, 0.4));
+}
+
+/* Standalone WhatsApp floating button transition */
+#whatsapp-float {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
 }
 
 /* ── Desktop Placement: Top Center ── */
 @media (min-width: 769px) {
   .floating-dock {
-    top: 22px;
+    top: 24px;
     left: 50%;
     transform: translate(-50%, -120%);
   }
@@ -1523,10 +1572,10 @@ header {
 @media (max-width: 768px) {
   .floating-dock {
     top: auto;
-    bottom: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
     left: 50%;
     transform: translate(-50%, 120%);
-    max-width: calc(100vw - 20px);
+    max-width: calc(100vw - 16px);
   }
 
   .floating-dock.is-visible {
@@ -1536,43 +1585,64 @@ header {
   }
 
   .floating-dock-glass {
-    padding: 5px 8px;
-    gap: 3px;
+    padding: 6px 10px;
+    gap: 4px;
     justify-content: center;
   }
 
   .floating-tab-btn {
-    padding: 7px 10px;
-    font-size: 0.78rem;
+    padding: 8px 11px;
+    font-size: 0.82rem;
     gap: 4px;
   }
 
   .floating-tab-btn i {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
 
   .floating-sub-btn {
-    padding: 5px 8px;
-    font-size: 0.72rem;
+    padding: 6px 9px;
+    font-size: 0.74rem;
+  }
+
+  /* WhatsApp button on mobile: compact round icon */
+  .floating-wa-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .floating-wa-btn .dock-wa-text {
+    display: none;
+  }
+
+  .floating-wa-btn i {
+    font-size: 1.15rem;
   }
 
   .floating-scroll-top {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
   }
 }
 
-/* Extra small mobile (under 440px): show only icons for main tabs to prevent overflow */
-@media (max-width: 440px) {
+/* Extra small mobile (under 430px) */
+@media (max-width: 430px) {
   .floating-tab-btn .dock-text {
     display: none;
   }
   .floating-tab-btn {
-    padding: 8px 10px;
+    padding: 8px 9px;
   }
   .floating-sub-btn .sub-text {
     display: none;
+  }
+  .floating-dock-glass {
+    padding: 5px 6px;
+    gap: 2px;
   }
 }
 
